@@ -1,7 +1,56 @@
 <app-header></app-header>
 <main class="main">
+    <div class="container">
     <h1 class="text-center my-5"> <i class="far fa-lemon fa-xs text-warning"></i> Le menu du jour</h1>
+
+    <div class="card mb-3 mx-auto" style="max-width: 1000px;" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+              alt="Trendy Pants and Shoes"
+              class="img-fluid rounded-start"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">1</h5>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div></div>
+
+    
     <h1 class="text-center my-5"> <i class="far fa-lemon fa-xs text-warning"></i> Le menu de la semaine</h1>
+    <div class="row ">
+        <div class="col-md-4 m-3 mx-auto rounded-2" *ngFor="let menu of menus">
+          <div class="card">
+            <img
+              [src]="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+              class="card-img-top"
+              alt="Hollywood Sign on The Hill"
+            />
+            <div class="card-body">
+              <p></p>
+              <h5 class="card-title">{{menu.label}}</h5>
+              <p class="card-text">
+                {{menu.priceDF}} &euro;
+              </p>
+              <p *ngFor="let meal of menu.meals">{{meal.label}}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 </main>
 <app-footer></app-footer>
 
