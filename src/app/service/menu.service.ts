@@ -1,3 +1,4 @@
+import { Image } from './../models/image';
 import { Menu } from './../models/menu';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -16,10 +17,24 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
     return this.http.get<Menu[]>(this.menuUrlApi+'/findall');
   }
 
-getImageMenu(id:number) {
-  const url = `${this.menuUrlApi+'/findimage'}/${id}`;
-  return this.http.get<Menu>(url);
-}
+  getMenuById(menuId:number): Observable<Menu[]> {
+    return this.http.get<any>(this.menuUrlApi+"/find/menuId");
+  }
 
-}
+  getAllMenuForToday() : Observable<Menu[]> {
+    console.log("getMenuToday : ")
+    return this.http.get<Menu[]>(this.menuUrlApi+'/findallavailablefortoday');
 
+  }
+
+  getAllMenuForWeek(weekNumber: number){
+    return this.http.get<Menu>(this.menuUrlApi+'/findallavailableforweek/' + weekNumber);
+  }
+
+  
+  getMenuImage(menuId: number): Observable<Image> { {
+    return this.http.get<Image>(this.menuUrlApi+"/findimg/"+menuId);
+ 
+ }
+}
+}

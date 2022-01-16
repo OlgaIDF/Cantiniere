@@ -1,5 +1,6 @@
 import { Ingredient } from './ingredient';
 import { Meal } from './meal';
+import { Image} from './image';
 
 export class Menu {
     id: number;
