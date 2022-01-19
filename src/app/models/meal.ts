@@ -1,3 +1,6 @@
+import { Ingredient } from './ingredient';
+import { Image } from './image';
+
 
 export class Meal {
     id: number;
@@ -7,6 +10,8 @@ export class Meal {
     priceDF: number;
     availableForWeeks: string;
     category: number;
+    ingredient?: Ingredient [];
+    image?: Image [];
 
     constructor(
         id: number,

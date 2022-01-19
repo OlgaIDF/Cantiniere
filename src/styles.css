@@ -4,6 +4,7 @@ html, body{
 }
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: #F9F6ED;
   
     }
     .main{
@@ -13,3 +14,9 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'Playfair Display', serif;
     color: #2d3f01;
 }
+
+a{
+    color: #80a300;
+    text-decoration: none;
+}
+

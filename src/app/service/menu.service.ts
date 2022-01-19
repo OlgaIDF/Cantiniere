@@ -31,8 +31,7 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
     return this.http.get<Menu>(this.menuUrlApi+'/findallavailableforweek/' + weekNumber);
   }
 
-  
-  getMenuImage(menuId: number): Observable<Image> { {
+  getMenuImage(menuId: number) { {
     return this.http.get<Image>(this.menuUrlApi+"/findimg/"+menuId);
  
  }
