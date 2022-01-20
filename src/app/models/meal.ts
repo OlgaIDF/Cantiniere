@@ -1,5 +1,4 @@
 import { Ingredient } from './ingredient';
-import { Image } from './image';
 
 
 export class Meal {
@@ -11,7 +10,6 @@ export class Meal {
     availableForWeeks: string;
     category: number;
     ingredient?: Ingredient [];
-    image?: Image [];
 
     constructor(
         id: number,

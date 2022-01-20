@@ -1,12 +1,10 @@
-
 import { Meal } from './meal';
-import { Image} from './image';
+
 
 export class Menu {
     id: number;
     label: string;
     status: boolean;
-   
     priceDF: number;
     availableForWeeks:string;
     category:number;
@@ -34,5 +32,21 @@ constructor(
        this.category = category
         
 }
+}
 
+export class Image {
+    id: number;
+    imagePath: string;
+    image64: string;
+ 
+    constructor(
+        id: number,
+        imagePath: string,
+    image64: string,
+    ) {
+        this.id = id;
+        this.imagePath = imagePath;
+        this.image64 = image64;
+        
+    }
 }

@@ -1,3 +1,4 @@
+import { Image } from './../models/image';
 import { Meal } from './../models/meal';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -28,9 +29,8 @@ export class MealService {
     return this.http.get<Meal>(this.mealUrlApi+'/findallavailableforweek/' + weekNumber);
   }
 
-  getMealImage(mealId: number) { {
-    return this.http.get<any>(this.mealUrlApi+"/findimg/"+mealId);
- 
+  findImgMeal(mealId: number) { {
+    return this.http.get<any>(this.mealUrlApi+"/findimg/"+mealId); 
  }
 }
 

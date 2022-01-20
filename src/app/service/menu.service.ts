@@ -32,7 +32,7 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
   }
 
   getMenuImage(menuId: number) { {
-    return this.http.get<Image>(this.menuUrlApi+"/findimg/"+menuId);
+    return this.http.get<any>(this.menuUrlApi+"/findimg/"+menuId);
  
  }
 }

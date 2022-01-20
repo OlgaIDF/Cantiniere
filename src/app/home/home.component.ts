@@ -1,5 +1,5 @@
+import { Meal } from './../models/meal';
 import { MealService } from './../service/meal.service';
-import { Image } from './../models/image';
 import { Menu } from './../models/menu';
 import { MenuService } from './../service/menu.service';
 import { Component, OnInit } from '@angular/core';
@@ -29,12 +29,13 @@ export class HomeComponent implements OnInit {
     private mealService: MealService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.getWeekNumber(this.dateWeek);
     this.getAllMenuForToday();
     this.getAllMealForToday();
+
     //this.getAllMenuForWeek();
-  
+
 
 
     // this.menuService.getMenus().subscribe(data => {
@@ -58,18 +59,29 @@ export class HomeComponent implements OnInit {
       .subscribe(
         response => {
           this.listMenuToday = response;
+          for (let i = 0; i < this.listMenuToday.length; i++) {
+            //    console.log('this.meal[i].id', this.mealList[i].id)
+            this.getMenuImage(this.listMenuToday[i]);
+
+          } 
           console.log('listMenuToday: ', this.listMenuToday);
-      
         }
       );
   }
+
+
 
   async getAllMealForToday() {
     this.mealService.getAllMealForToday()
       .subscribe(
         response => {
           this.mealList = response;
-          console.log('mealList: ', this.mealList);
+          //  console.log('mealList: ', this.mealList);
+          for (let i = 0; i < this.mealList.length; i++) {
+            //    console.log('this.meal[i].id', this.mealList[i].id)
+            this.getMealImage(this.mealList[i]);
+
+          }
         }
       );
   }
@@ -78,21 +90,31 @@ export class HomeComponent implements OnInit {
   //     this.menus = response;
   //     console.log('listMenuThisWeek: ', this.menus);} ); }
   /**
-     * image menu de la semaine
-    
-    
-   async getMenuImage(menuId:number) {
-    const res = this.menuService. getMenuImage(menuId);
-    this.listMenuToday.forEach(element => {
-      if (element.imageId === res.id) {
-        element.img = res.image64;
-        console.log("getMenuImage=>");
-        console.log(res);    
+     * image meals de la semaine
+  */  
+
+ 
+  async getMealImage(meal: any) {
+
+    this.mealService.findImgMeal(meal.id).subscribe(element => {
+      this.images = element;
+      if (meal.imageId == this.images.id) {
+        meal.image64 =  this.images.image64;
       }
+      
     });
   }
- */ 
 
+  async getMenuImage(menu: any) {
+
+    this.menuService.getMenuImage(menu.id).subscribe(element => {
+      this.images = element;
+      if (menu.imageId == this.images.id) {
+        menu.image64 =  this.images.image64;
+      }
+      
+    });
+  }
   // Méthode pour récupérer le numéro de la semaine actuelle
   getWeekNumber(dateWeek: any) {
     dateWeek = new Date(Date.UTC(dateWeek.getFullYear(), dateWeek.getMonth(), dateWeek.getDate()));
