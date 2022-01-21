@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class IngredientService {
-  ingredientUrlApi = 'http://localhost:8080/lunchtime/menu';
+  ingredientUrlApi = 'http://localhost:8080/lunchtime/ingredient';
   constructor(private http: HttpClient) { }
 
   
@@ -19,17 +19,8 @@ export class IngredientService {
     return this.http.get<any>(this.ingredientUrlApi+"/find/ingredientId");
   }
 
-  getAllIngredientForToday() : Observable<Ingredient[]> {
-    console.log("getMenuToday : ")
-    return this.http.get<Ingredient[]>(this.ingredientUrlApi+'/findallavailablefortoday');
-
-  }
-
-  getAllIngredientForWeek(weekNumber: number){
-    return this.http.get<Ingredient>(this.ingredientUrlApi+'/findallavailableforweek/' + weekNumber);
-  }
-
-  getIngredientImage(ingredientId: number) { {
+ 
+  findImgIngredient(ingredientId: number) { {
     return this.http.get<any>(this.ingredientUrlApi+"/findimg/"+ingredientId);
  
  }

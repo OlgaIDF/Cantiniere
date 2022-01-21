@@ -1,42 +1,99 @@
 <app-header></app-header>
+
+
 <main class="main">
   <div class="container">
-
+    
+<app-digital-clock></app-digital-clock>
     <h1 class="text-center my-5"> Le menu de la semaine</h1>
-    <div class="row d-flex justify-content-between flex-wrap">
-     
-      
+    
+    <div class="row d-flex justify-content-between flex-wrap ">
 
-        <div class="card " *ngFor="let menu of listMenuToday" >
-          <div class="card-title"><h4 class="text-center m-3"> <img [src]="menu.image64" alt="" width="60"> {{menu.label}}</h4>
-            <hr>
-        </div>
-          <div class="card-body">
-            
-            <ul *ngFor="let meal of menu.meals">
-              <li>{{meal.label}}</li>
-             
-             
-            </ul>
-        </div>
-             
-            <div class="card-footer text-center">     
-           <a class=" btn btnCard"> {{menu.priceDF}} &euro;</a>
-            </div>
 
+
+      <div class="card " *ngFor="let menu of listMenuToday">
+        <div class="text-center m-3">
+          <div class="card-title">
+            <h4 class="my-3"><img src="../../assets/lemon .png" alt="" class="img-fluid " width="60"> {{menu.label}}
+              <hr>
+
+            </h4> <img [src]="menu.image64" alt="{{menu.label}}" class="img-fluid rounded mt-2" width="200">
           </div>
         </div>
-        <h1 class="text-center my-5"> Les plats de la semaine</h1>
-<div *ngFor="let meal of mealList">
-{{meal.label}}
+        <hr>
+        <!--<div class="card-title"> <img [src]="menu.image64"  class="card-img-top" alt="{{menu.label}}" height="300"> 
+          
+        </div>-->
+        <div class="card-body">
 
- <img [src]="meal.image64" alt="" srcset="">
-<p>Prix: {{meal.priceDF}}</p>
-<ul *ngFor="let ingredient of meal.ingredients">
-  <li>{{ingredient.label}}</li>
-</ul>
-</div>
+
+
+          <div class="row my-3" *ngFor="let meal of menu.meals">
+            <div class="col-8 ">
+             <h5 class="my-3">{{meal.label}}</h5> 
+            
+             <div *ngIf = "meal.ingredients" >
+ <p class="text-muted">* options supplémentaires</p> 
+              <ul *ngFor="let ingredient of meal.ingredients">
+                <li>{{ingredient.label}}</li>
+              </ul>
+              </div>
+            </div>
+            <div class="col-4">
+              <img [src]="meal.image64" class="card-img-top img-thumbnail" alt="" srcset="">
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="card-footer text-center">
+          <span class="prixMenu">Prix: {{menu.priceDF}} &euro; </span>
+          <a href="" class="btn btnCard my-3 btn-block"> Ajouter au panier</a>
+         
+        </div>
+      </div>
     </div>
- 
+  
+  <h1 class="text-center my-5"> Les plats de la semaine</h1>
+
+  <div class="row d-flex justify-content-between flex-wrap">
+
+    <div class="card cardMeal " *ngFor="let meal of mealList">
+      <div class="text-center m-3">
+        <div class="card-title">
+          <h4 class="my-3"><img src="../../assets/lemon .png" alt="" class="img-fluid " width="60"> {{meal.label}} </h4> 
+           <hr>
+          <img [src]="meal.image64" alt="{{meal.label}}" class="img-fluid rounded mt-2" width="200">
+         
+        </div>
+      </div>
+      <hr>
+     
+      <div class="card-body">
+
+<p class="text-muted">* options supplémentaires</p> 
+           
+<div *ngFor="let ingredient of meal.ingredients" class="my-1" >
+  
+  <span>{{ingredient.label}} &nbsp;</span>
+  <img [src]="ingredient.image64" class="img-thumbnail" width="60" alt="" srcset="">
+</div>
+      
+</div>
+      <div class="card-footer text-center">
+        <span class="prixMeal">Prix: {{meal.priceDF}} &euro; </span>
+        <a href="" class="btn btnCard my-3 btn-block"> Ajouter au panier</a>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 </main>
 <app-footer></app-footer>

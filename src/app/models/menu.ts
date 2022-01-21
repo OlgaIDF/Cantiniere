@@ -8,7 +8,7 @@ export class Menu {
     priceDF: number;
     availableForWeeks:string;
     category:number;
-    meals?:Meal  [];;
+    meals?:Meal  [];
     imageId: number;
 
 constructor(

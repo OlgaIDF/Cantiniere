@@ -9,7 +9,7 @@ export class Meal {
     priceDF: number;
     availableForWeeks: string;
     category: number;
-    ingredient?: Ingredient [];
+    ingredients?: Ingredient [];
 
     constructor(
         id: number,
