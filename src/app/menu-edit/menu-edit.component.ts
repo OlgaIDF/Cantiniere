@@ -28,11 +28,11 @@ export class MenuEditComponent implements OnInit {
 }
 
   onSubmit(f:NgForm){
-    this.menuService.updateMenu(this.menu.menuId, this.menu).subscribe(data => {   
+    this.menuService.updateMenu(this.menu.menuId, this.menu).subscribe(data => {
       this.menu = data
     });
     console.log(this.menu);
-    let link = ['/add-menu', this.menu.id];
+    let link = ['/edit-menu', this.menu.id];
     this.router.navigate(link);
   }
 
