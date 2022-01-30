@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<main class="main">
+  <div class="container">
+    <table class="table table-bordered">
+      <thead class="table-dark m-5">
+        <tr>
+          <th>#ID</th>
+          <th>Label</th>
+          <th>Status</th>
+          <th>Prix</th>
+          <th>Semaines</th>
+
+          <th>Plats</th>
+          <th>ImageId</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menu of menus">
+          <th >{{ menu.id }}</th>
+          <td>{{ menu.label }}</td>
+          <td>{{ menu.status }}</td>
+          <td>{{ menu.priceDF }}</td>
+          <td>{{ menu.availableForWeeks }}</td>
+
+          <td >
+            <ul *ngFor="let meal of menu.meals"><li>{{meal.label}}</li></ul>
+            </td>
+          <td>{{ menu.imageId }}</td>
+          <td>
+            <button type="button" class="btn btn-secondary me-2">Ajouter</button>
+            <button type="button" class="btn btn-primary me-2">Modifier</button>
+            <button type="button" class="btn btn-danger">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<app-footer></app-footer>

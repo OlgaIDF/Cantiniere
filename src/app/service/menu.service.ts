@@ -1,6 +1,6 @@
 import { Image } from './../models/image';
 import { Menu } from './../models/menu';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuService {
+
 menuUrlApi = 'http://localhost:8080/lunchtime/menu';
 
   constructor(private http: HttpClient) { }
@@ -33,7 +34,14 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
 
   getMenuImage(menuId: number) { {
     return this.http.get<any>(this.menuUrlApi+"/findimg/"+menuId);
- 
- }
 }
+ }
+ updateMenu(menuId: number, menu:Menu):Observable<Menu>{
+
+  const httpOptions ={
+  headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
+  }
+   return this.http.patch<Menu>(this.menuUrlApi+ 'menu/update/'+ menuId ,menu,httpOptions);  //retourne un observable (requete asynchrone de type delete)
+}
+
 }

@@ -10,6 +10,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DigitalClockComponent } from './digital-clock/digital-clock.component';
+import { MenuManagementComponent } from './menu-management/menu-management.component';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { MenuAddComponent } from './menu-add/menu-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { DigitalClockComponent } from './digital-clock/digital-clock.component';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-    DigitalClockComponent
+    DigitalClockComponent,
+    MenuManagementComponent,
+    MenuEditComponent,
+    MenuAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [MenuService],
