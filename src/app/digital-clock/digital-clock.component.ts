@@ -12,8 +12,8 @@ export class DigitalClockComponent implements OnInit {
   private date = new Date();
   public hour : any;
   public minute: any;
- 
-  public ampm: any;
+
+  // public ampm: any;
   public day:any;
 
   constructor() { }
@@ -31,14 +31,14 @@ export class DigitalClockComponent implements OnInit {
 private updateDate(date:Date){
   const hours = date.getHours();
 
-  this.ampm = hours>=12 ? 'PM' : 'AM';
-  this.hour = hours % 12;
-  this.hour = this.hour ? this.hour:12;
-  this.hour = this.hour <10 ? '0' + this.hour : this.hour;
+  // this.ampm = hours>=12 ? 'PM' : 'AM';
+ // this.hour = hours % 12;
+  // this.hour = this.hour ? this.hour:12;
+  this.hour = hours <10 ? '0' + hours : hours.toString();
 
   const minutes = date.getMinutes();
   this.minute = minutes <10 ? '0' + minutes: minutes.toString();
   const seconds = date.getSeconds();
-  
+
 }
 }

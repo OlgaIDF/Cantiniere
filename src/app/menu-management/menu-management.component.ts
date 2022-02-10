@@ -10,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuManagementComponent implements OnInit {
   menus: any;
+totalLength:any;
+p: number = 1;
+
 
   constructor(
     private menuService: MenuService,
@@ -25,6 +28,7 @@ this.getAllMenus();
   getAllMenus(){
     this.menuService.getMenus().subscribe(data => {
  this.menus = data;
+ this.totalLength = data.length;
 console.log(data)
 })
 

@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class MenuService {
 
 menuUrlApi = 'http://localhost:8080/lunchtime/menu';
+menu:Menu[]
 
   constructor(private http: HttpClient) { }
 
@@ -18,8 +19,10 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
     return this.http.get<Menu[]>(this.menuUrlApi+'/findall');
   }
 
-  getMenuById(menuId:number): Observable<Menu[]> {
-    return this.http.get<any>(this.menuUrlApi+"/find/menuId");
+  getMenuById(id:number){
+
+    const url = `${this.menuUrlApi}/find/${id}`;
+     return this.http.get<Menu>(url);
   }
 
   getAllMenuForToday() : Observable<Menu[]> {
@@ -35,6 +38,13 @@ menuUrlApi = 'http://localhost:8080/lunchtime/menu';
   getMenuImage(menuId: number) { {
     return this.http.get<any>(this.menuUrlApi+"/findimg/"+menuId);
 }
+// addMenu(menu:Menu){// prend en argument un objet pokemon
+
+//   const httpOptions ={
+//   headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
+//   }
+//    return this.http.post<Menu>(this.pokemonsUrlApi,menu,httpOptions);   //retourne un observable (requete asynchrone de type delete)
+// }
  }
  updateMenu(menuId: number, menu:Menu):Observable<Menu>{
 

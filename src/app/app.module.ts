@@ -14,6 +14,8 @@ import { MenuManagementComponent } from './menu-management/menu-management.compo
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuAddComponent } from './menu-add/menu-add.component';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +27,15 @@ import { FormsModule } from '@angular/forms';
     DigitalClockComponent,
     MenuManagementComponent,
     MenuEditComponent,
-    MenuAddComponent
+    MenuAddComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [MenuService],
   bootstrap: [AppComponent]

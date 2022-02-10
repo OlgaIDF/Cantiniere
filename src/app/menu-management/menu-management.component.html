@@ -2,9 +2,10 @@
 
 <main class="main">
   <div class="container">
-    <table class="table table-bordered">
-      <thead class="table-dark m-5">
-        <tr>
+    <h2 class="my-5">  Liste de menus</h2>
+    <table class="table table-bordered mt-5">
+      <thead class="table-dark p-5">
+        <tr >
           <th>#ID</th>
           <th>Label</th>
           <th>Status</th>
@@ -16,13 +17,18 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let menu of menus">
-          <th >{{ menu.id }}</th>
+      <tbody >
+        <tr *ngFor="let menu of menus | paginate: {
+        id: 'first',
+        itemsPerPage: 5,
+        currentPage: p,
+        totalItems: totalLength
+            }">
+          <td >{{ menu.id }}</td>
           <td>{{ menu.label }}</td>
           <td>{{ menu.status }}</td>
           <td>{{ menu.priceDF }}</td>
-          <td>{{ menu.availableForWeeks }}</td>
+          <td>{{ menu.availableForWeeks }} </td>
 
           <td >
             <ul *ngFor="let meal of menu.meals"><li>{{meal.label}}</li></ul>
@@ -30,12 +36,17 @@
           <td>{{ menu.imageId }}</td>
           <td>
             <button type="button" class="btn btn-secondary me-2">Ajouter</button>
-            <button type="button" class="btn btn-primary me-2">Modifier</button>
+            <button type="button" class="btn btn-primary me-2" [routerLink]="['edit-menu', menu.id]">Modifier</button>
             <button type="button" class="btn btn-danger">Supprimer</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <pagination-controls  previousLabel="Précédente"
+    nextLabel="Suivante" (pageChange)="p = $event" class="text-center my-5" id="first"></pagination-controls>
+
+
+
   </div>
 </main>
 <app-footer></app-footer>

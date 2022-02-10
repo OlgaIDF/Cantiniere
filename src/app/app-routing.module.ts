@@ -14,7 +14,7 @@ const routes: Routes = [
     component: MenuManagementComponent
   },
   {
-    path:'edit-menu/:id',
+    path:'menu-management/edit-menu/:id',
     component: MenuEditComponent
   },
 ];

@@ -20,7 +20,7 @@ export class MenuEditComponent implements OnInit {
     let id = this.route.snapshot.params['id']; // recuperation de l'id du menu dans l'url active
     this.menu = this.menuService.getMenuById(id).subscribe(data=>{
       this.menu = data;
-    }); // Recupere le menu avec l'id methode GET() + ID du pokemon
+    }); // Recupere le menu avec l'id methode GET() + ID du menu
   }
 
   goBack(): void {
@@ -28,7 +28,7 @@ export class MenuEditComponent implements OnInit {
 }
 
   onSubmit(f:NgForm){
-    this.menuService.updateMenu(this.menu.menuId, this.menu).subscribe(data => {
+    this.menuService.updateMenu(this.menu.id, this.menu).subscribe(data => {
       this.menu = data
     });
     console.log(this.menu);
