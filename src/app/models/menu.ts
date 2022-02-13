@@ -1,30 +1,30 @@
 import { Meal } from './meal';
 
 export class Menu {
-  id: number;
+  id?: number;
   label: string;
   status: boolean;
   priceDF: number;
   availableForWeeks: string;
-    meals?: Meal[];
+  meals: Meal[];
   imageId: number;
 
   constructor(
-    id: number,
-    label: string,
-    status: boolean,
-    imageId: number,
-    priceDF: number,
-    availableForWeeks: string,
-
+    //id: number,
+    label: string = '',
+    status: boolean = false,
+    imageId: number = 0,
+    priceDF: number = 0,
+    availableForWeeks: string = '',
+    meals: [] = []
   ) {
-    (this.id = id),
-      (this.label = label),
+    //this.id = id,
+    (this.label = label),
       (this.status = status),
       (this.imageId = imageId),
       (this.priceDF = priceDF),
-      (this.availableForWeeks = availableForWeeks)
-
+      (this.availableForWeeks = availableForWeeks),
+      (this.meals = meals);
   }
 }
 

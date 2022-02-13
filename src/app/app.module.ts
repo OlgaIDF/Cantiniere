@@ -14,8 +14,8 @@ import { MenuManagementComponent } from './menu-management/menu-management.compo
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuAddComponent } from './menu-add/menu-add.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -28,16 +28,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MenuManagementComponent,
     MenuEditComponent,
     MenuAddComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [MenuService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

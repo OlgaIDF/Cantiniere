@@ -1,1 +1,73 @@
-<p>menu-add works!</p>
+<section class="py-5">
+  <h1 class="text-center">Ajout d'un nouveau menu</h1>
+  <div     class="container card px-4 px-lg-5 my-5">
+    <div class="row">
+
+      <div class="col-md-10">
+
+        <form *ngIf="menu" (ngSubmit)="onSubmit(nf)" #nf="ngForm">
+          <div class="row">
+            <div class="col-md-12 offset-s2">
+              <div class="card-panel">
+            <!--      Menu id
+                <div class="form-group">
+                  <label for="name">Id</label>
+                  <input type="text" class="form-control" id="id"
+                         [(ngModel)]="menu.id" name="id">
+
+                </div> -->
+
+                <!-- Menu label -->
+                <div >
+                  <label >Libellé</label>
+                  <input   type="text"  [(ngModel)]="menu.label"
+                      name="label" class="form-control" required>
+                 </div>
+<!-- Menu status -->
+
+<div >
+<label for="status">Statut</label>
+<br>
+
+    <input type="radio" value="1" name="status" [(ngModel)]="menu.status" checked> Activé
+    <input type="radio" value="0" name="status" [(ngModel)]="menu.status"> Desactivé
+
+</div>
+<!-- Menu image -->
+<div >
+  <label >Image</label>
+  <input   type="text"  [(ngModel)]="menu.imageId"
+      name="label" class="form-control" required>
+ </div>
+ <!-- Menu price -->
+<div >
+  <label >Price</label>
+  <input   type="text"  [(ngModel)]="menu.priceDF"
+      name="label" class="form-control" required>
+ </div>
+ <!-- Menu semaine -->
+ <div >
+  <label >Sepmaine</label>
+  <input   type="text"  [(ngModel)]="menu.availableForWeeks"
+      name="label" class="form-control" required>
+ </div>
+                <!-- Submit button -->
+                <div class="divider"></div>
+                <div class="section center">
+                  <button type="submit"
+                    class="btn btn-warning float-end my-5"
+                    [disabled]="!nf.form.valid">
+                    Valider</button>
+                </div>
+              </div>
+              </div>
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

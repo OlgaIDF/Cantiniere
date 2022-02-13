@@ -1,3 +1,4 @@
+import { MenuAddComponent } from './menu-add/menu-add.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuManagementComponent } from './menu-management/menu-management.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:'menu-management/edit-menu/:id',
     component: MenuEditComponent
+  },
+  {
+    path:'menu-management/add-menu',
+    component: MenuAddComponent
   },
 ];
 

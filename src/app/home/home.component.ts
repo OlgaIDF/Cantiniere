@@ -22,16 +22,9 @@ export class HomeComponent implements OnInit {
   images: any;
   mealList: any = [];
   ingredients: any = [];
-  mainMenu: any = [6];
+  mainMenu: any = [];
 
-  categories = {
-    1: 'plats du monde',
-    2: 'entrée',
-    3: 'plats',
-    5: 'dessert',
-    7: 'soupes',
-    9: 'boission',
-  };
+
 
   constructor(
     private menuService: MenuService,
@@ -69,7 +62,7 @@ export class HomeComponent implements OnInit {
           }
         }
       });
-      
+
       for (let g = 0; g < this.listMenuToday.length; g++) {
         if (this.listMenuToday[g] == undefined ||
           this.listMenuToday[g].meals == undefined) {

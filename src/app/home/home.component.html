@@ -3,10 +3,10 @@
 
 <main class="main">
   <div class="container">
-    
-<app-digital-clock></app-digital-clock>
+
+
     <h1 class="text-center my-5"> Le menu de la semaine</h1>
-    
+
     <div class="row d-flex justify-content-between flex-wrap ">
 
 
@@ -21,8 +21,8 @@
           </div>
         </div>
         <hr>
-        <!--<div class="card-title"> <img [src]="menu.image64"  class="card-img-top" alt="{{menu.label}}" height="300"> 
-          
+        <!--<div class="card-title"> <img [src]="menu.image64"  class="card-img-top" alt="{{menu.label}}" height="300">
+
         </div>-->
         <div class="card-body">
 
@@ -30,10 +30,10 @@
 
           <div class="row my-3" *ngFor="let meal of menu.meals">
             <div class="col-8 ">
-             <h5 class="my-3">{{meal.label}}</h5> 
-            
+             <h5 class="my-3">{{meal.label}}</h5>
+
              <div *ngIf = "meal.ingredients" >
- <p class="text-muted">* options supplémentaires</p> 
+ <p class="text-muted">* options supplémentaires</p>
               <ul *ngFor="let ingredient of meal.ingredients">
                 <li>{{ingredient.label}}</li>
               </ul>
@@ -51,11 +51,11 @@
         <div class="card-footer text-center">
           <span class="prixMenu">Prix: {{menu.priceDF}} &euro; </span>
           <a href="" class="btn btnCard my-3 btn-block"> Ajouter au panier</a>
-         
+
         </div>
       </div>
     </div>
-  
+
   <h1 class="text-center my-5"> Les plats de la semaine</h1>
 
   <div class="row d-flex justify-content-between flex-wrap">
@@ -63,29 +63,29 @@
     <div class="card cardMeal " *ngFor="let meal of mealList">
       <div class="text-center m-3">
         <div class="card-title">
-          <h4 class="my-3"><img src="../../assets/lemon .png" alt="" class="img-fluid " width="60"> {{meal.label}} </h4> 
+          <h4 class="my-3"><img src="../../assets/lemon .png" alt="" class="img-fluid " width="60"> {{meal.label}} </h4>
            <hr>
           <img [src]="meal.image64" alt="{{meal.label}}" class="img-fluid rounded mt-2" width="200">
-         
+
         </div>
       </div>
       <hr>
-     
+
       <div class="card-body">
 
-<p class="text-muted">* options supplémentaires</p> 
-           
+<p class="text-muted">* options supplémentaires</p>
+
 <div *ngFor="let ingredient of meal.ingredients" class="my-1" >
-  
+
   <span>{{ingredient.label}} &nbsp;</span>
   <img [src]="ingredient.image64" class="img-thumbnail" width="60" alt="" srcset="">
 </div>
-      
+
 </div>
       <div class="card-footer text-center">
         <span class="prixMeal">Prix: {{meal.priceDF}} &euro; </span>
         <a href="" class="btn btnCard my-3 btn-block"> Ajouter au panier</a>
-       
+
       </div>
     </div>
   </div>

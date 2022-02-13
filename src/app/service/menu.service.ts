@@ -9,9 +9,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuService {
-
+  pokemon: Menu =  new Menu();
 menuUrlApi = 'http://localhost:8080/lunchtime/menu';
-menu:Menu[]
 
   constructor(private http: HttpClient) { }
 
@@ -38,20 +37,20 @@ menu:Menu[]
   getMenuImage(menuId: number) { {
     return this.http.get<any>(this.menuUrlApi+"/findimg/"+menuId);
 }
-// addMenu(menu:Menu){// prend en argument un objet pokemon
-
-//   const httpOptions ={
-//   headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
-//   }
-//    return this.http.post<Menu>(this.pokemonsUrlApi,menu,httpOptions);   //retourne un observable (requete asynchrone de type delete)
-// }
+  }
+addMenu(menu:Menu){
+const httpOptions ={
+headers: new HttpHeaders({'Content-Type':'application/json'}) }
+return this.http.post<Menu>(this.menuUrlApi+"/add",menu,httpOptions);   //retourne un observable (requete asynchrone de type delete)
  }
+
+
  updateMenu(menuId: number, menu:Menu):Observable<Menu>{
 
   const httpOptions ={
   headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
   }
-   return this.http.patch<Menu>(this.menuUrlApi+ 'menu/update/'+ menuId ,menu,httpOptions);  //retourne un observable (requete asynchrone de type delete)
+   return this.http.patch<Menu>(this.menuUrlApi+ '/update/'+menuId,menu,httpOptions);  //retourne un observable (requete asynchrone de type delete)
 }
 
 }
