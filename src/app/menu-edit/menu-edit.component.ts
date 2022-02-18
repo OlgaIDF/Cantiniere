@@ -16,25 +16,28 @@ export class MenuEditComponent implements OnInit {
   @Input()
   menu: any;
   images: any;
-  mealsSelected: Meal[] = [];
   meals: any;
   dropdownSettings: IDropdownSettings = {};
-  dropdownList = [];
+  defaultMealsMenu: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private menuService: MenuService,
     private mealService: MealService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'label',
+      selectAllText: 'Sélectionner tout',
+      unSelectAllText: 'Désélectionner tout ',
+    };
     this.getMenu();
   }
 
-
   async getMenu() {
-
-
     let id = this.route.snapshot.params['id'];
     this.menu = this.menuService.getMenuById(id).subscribe((data) => {
       this.menu = data;
@@ -46,36 +49,24 @@ export class MenuEditComponent implements OnInit {
           this.menu.image64 = this.images.image64;
         }
       });
+
       //MealsAll
       this.mealService.getMeals().subscribe((data) => {
         this.meals = data;
-        console.log('Meals: ', this.meals );
-
-        //MealsSelected
-        if (this.menu['meals'] !== undefined) {
-          this.menu['meals'].forEach((element: Meal) => {
-            this.mealsSelected.push(element);
-          });
-          console.log('Selected meals:', this.mealsSelected);
-        }
-
-        this.dropdownSettings = {
-          idField: 'id',
-          textField: 'label',
-          selectAllText: 'Sélectionner tout',
-          unSelectAllText: 'Désélectionner tout ',
-        };
-
+        console.log('Meals: ', this.meals);
       });
     });
   }
 
   onSubmit(f: NgForm) {
-    this.menuService.updateMenu(this.menu.id, this.menu).subscribe((data) => {
-      this.menu = data;
-    });
+    // this.menuService.updateMenu(this.menu.id, this.menu).subscribe((data) => {
+    //   this.menu = data;
+    // });
+
+   
+
     console.log(this.menu);
-    let link = ['/management-menu'];
-    this.router.navigate(link);
+
+    //this.router.navigateByUrl('menu-management');
   }
 }
