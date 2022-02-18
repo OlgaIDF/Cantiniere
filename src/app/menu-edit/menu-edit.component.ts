@@ -71,8 +71,8 @@ export class MenuEditComponent implements OnInit {
 
         //console.log('dropdownList: ', this.meals.id);
         this.dropdownSettings = {
-          idField: 'meals.id',
-          textField: 'meals.label',
+          idField: 'id',
+          textField: 'label',
         };
 
 
