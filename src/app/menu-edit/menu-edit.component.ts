@@ -31,9 +31,7 @@ export class MenuEditComponent implements OnInit {
     this.getMenu();
   }
 
-  goBack(): void {
-    this.router.navigate(['']); // fonction de redirection vers la page home
-  }
+
   async getMenu() {
 
 
@@ -61,26 +59,13 @@ export class MenuEditComponent implements OnInit {
           console.log('Selected meals:', this.mealsSelected);
         }
 
-
-
-
-
-        // this.dropdownList = [
-        //   { item_id: this.meals.id, item_text: this.meals.label },
-        // ];
-
-        //console.log('dropdownList: ', this.meals.id);
         this.dropdownSettings = {
           idField: 'id',
           textField: 'label',
+          selectAllText: 'Sélectionner tout',
+          unSelectAllText: 'Désélectionner tout ',
         };
 
-
-        //   this.dropdownSettings = {
-        //     idField: 'meals.id',
-        //     textField: 'meals.label',
-        //   };
-        //  console.log(this.meals);
       });
     });
   }

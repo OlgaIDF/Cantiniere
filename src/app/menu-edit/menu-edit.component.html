@@ -38,8 +38,17 @@
 							<div>
 								<label>Meals</label>
 
-								<ng-multiselect-dropdown name="meals" [(ngModel)]="menu.meals" [settings]="dropdownSettings" [data]="meals"></ng-multiselect-dropdown>
-							
+												<ng-multiselect-dropdown
+                [settings]="dropdownSettings"
+                [data]="meals"
+                 [placeholder]="'Sélectionnez les plats'"
+               [(ngModel)]="menu.meals"
+               name="meals"
+
+
+                 >
+              </ng-multiselect-dropdown>
+
               </div>
 							<!-- Menu semaine -->
 							<div>
