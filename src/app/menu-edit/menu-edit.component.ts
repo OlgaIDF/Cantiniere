@@ -15,10 +15,13 @@ import { Menu } from '../models/menu';
 export class MenuEditComponent implements OnInit {
   @Input()
   menu: any;
+  menusAll: any;
   images: any;
   meals: any;
   dropdownSettings: IDropdownSettings = {};
   defaultMealsMenu: any;
+  temp_meals: any = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,7 +38,7 @@ export class MenuEditComponent implements OnInit {
       unSelectAllText: 'Désélectionner tout ',
     };
     this.getMenu();
-  }
+  }//ngOnInit()
 
   async getMenu() {
     let id = this.route.snapshot.params['id'];
@@ -46,7 +49,7 @@ export class MenuEditComponent implements OnInit {
       this.menuService.getMenuImage(id).subscribe((element) => {
         this.images = element;
         if (this.menu.imageId == this.images.id) {
-          this.menu.image64 = this.images.image64;
+         this.menu.image64 = this.images.image64;
         }
       });
 
@@ -56,17 +59,26 @@ export class MenuEditComponent implements OnInit {
         console.log('Meals: ', this.meals);
       });
     });
-  }
+  }//getMenu()
 
   onSubmit(f: NgForm) {
-    // this.menuService.updateMenu(this.menu.id, this.menu).subscribe((data) => {
-    //   this.menu = data;
+    // this.menuService.getMenus().subscribe(data => {
+    //   this.menusAll = data;
     // });
+    // console.log('this.menusAll', this.menusAll);
+    // this.menu.me
 
-   
+    for (let i = 0; i < this.menu.meals.length; i++) {
+      this.temp_meals.push(this.meals[this.menu.meals[i].id - 1].id);//meals id bigger than index in the meals Array by 1
+    }
+    this.menu.mealIds = this.temp_meals;
 
-    console.log(this.menu);
+    this.menuService.updateMenu(this.menu.id, this.menu).subscribe((data) => {
+      this.menu = data;
+    });
+
+    console.log('onSubmit this.menu', this.menu);
 
     //this.router.navigateByUrl('menu-management');
   }
-}
+}//onSubmit()

@@ -37,7 +37,7 @@ this.getAllMenus();
   getAllMenus(){
     this.menuService.getMenus().subscribe(data => {
  this.menus = data;
- this.totalLength = data.length;
+ //this.totalLength = data.length;
 console.log(data);
 data.forEach((value) => {
   this.getMenuImage(value);})
