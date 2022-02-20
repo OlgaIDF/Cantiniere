@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Menu } from '../models/menu';
 
+
+
+
 @Component({
   selector: 'app-menu-edit',
   templateUrl: './menu-edit.component.html',
@@ -15,11 +18,14 @@ import { Menu } from '../models/menu';
 export class MenuEditComponent implements OnInit {
   @Input()
   menu: any;
-  menusAll: any;
+  menus: any;
   images: any;
   meals: any;
+  week: number | undefined;
   dropdownSettings: IDropdownSettings = {};
-  defaultMealsMenu: any;
+  dropdownSettingsWeek: IDropdownSettings = {};
+
+  availableForWeeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53];
   temp_meals: any = [];
 
   constructor(
@@ -31,13 +37,22 @@ export class MenuEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.dropdownSettings = {
-      singleSelection: false,
+
       idField: 'id',
       textField: 'label',
       selectAllText: 'Sélectionner tout',
       unSelectAllText: 'Désélectionner tout ',
     };
+
+    this.dropdownSettingsWeek = {
+      idField: 'id',
+      textField: 'weekNumber',
+      selectAllText: 'Sélectionner tout',
+      unSelectAllText: 'Désélectionner tout ',
+    };
     this.getMenu();
+
+
   }//ngOnInit()
 
   async getMenu() {
@@ -58,16 +73,12 @@ export class MenuEditComponent implements OnInit {
         this.meals = data;
         console.log('Meals: ', this.meals);
       });
+
+
     });
   }//getMenu()
 
   onSubmit(f: NgForm) {
-    // this.menuService.getMenus().subscribe(data => {
-    //   this.menusAll = data;
-    // });
-    // console.log('this.menusAll', this.menusAll);
-    // this.menu.me
-
     for (let i = 0; i < this.menu.meals.length; i++) {
       this.temp_meals.push(this.meals[this.menu.meals[i].id - 1].id);//meals id bigger than index in the meals Array by 1
     }

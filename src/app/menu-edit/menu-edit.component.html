@@ -37,7 +37,7 @@
                   required
                 />
               </div>
-              <!--	 Menu image
+              <!--	 Menu image -->
               <div>
                 <label>Image</label>
                 <input
@@ -47,7 +47,7 @@
                   class="form-control"
                   required
                 />
-              </div> -->
+              </div>
               <!-- Menu price -->
               <div>
                 <label>Price</label>
@@ -72,16 +72,16 @@
                 ></ng-multiselect-dropdown>
               </div>
               <!-- Menu semaine -->
-              <div>
+
                 <label>Disponibilité par semaine</label>
-                <input
-                  type="text"
-                  [(ngModel)]="menu.availableForWeeks"
-                  name="availableForWeeks"
-                  class="form-control"
-                  required
-                />
-              </div>
+                <ng-multiselect-dropdown
+                [settings]="dropdownSettingsWeek"
+                [data]="availableForWeeks"
+                [placeholder]="'Sélectionnez les semaines'"
+                [(ngModel)]=" menu.availableForWeeks"
+                name="availableForWeeks"
+              ></ng-multiselect-dropdown>
+
               <!--  Submit button -->
               <div class="divider"></div>
               <div class="section center">
