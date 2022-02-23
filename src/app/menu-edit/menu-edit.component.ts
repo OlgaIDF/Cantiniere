@@ -1,3 +1,4 @@
+import { Image } from './../models/image';
 import { MealService } from './../service/meal.service';
 import { Meal } from './../models/meal';
 import { MenuService } from './../service/menu.service';
@@ -21,6 +22,8 @@ export class MenuEditComponent implements OnInit {
   menus: any;
   images: any;
   meals: any;
+  tempImg: any;
+  img64: Image | undefined;
   week: number | undefined;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettingsWeek: IDropdownSettings = {};
@@ -64,7 +67,7 @@ export class MenuEditComponent implements OnInit {
       this.menuService.getMenuImage(id).subscribe((element) => {
         this.images = element;
         if (this.menu.imageId == this.images.id) {
-         this.menu.image64 = this.images.image64;
+          this.menu.image64 = this.images.image64;
         }
       });
 
@@ -87,9 +90,17 @@ export class MenuEditComponent implements OnInit {
     this.menuService.updateMenu(this.menu.id, this.menu).subscribe((data) => {
       this.menu = data;
     });
+    console.log("image_id", this.menu.imageId);
+
+    let filePathAndName = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
+    this.tempImg = new Image(filePathAndName, this.menu.image64);
+    console.log('Img class', this.tempImg);
+    this.menuService.updateImageMenu(this.menu.id, this.tempImg).subscribe((data) => {
+      this.menu.image = data;
+    });
 
     console.log('onSubmit this.menu', this.menu);
 
-    //this.router.navigateByUrl('menu-management');
+    this.router.navigateByUrl('menu-management');
   }
 }//onSubmit()
