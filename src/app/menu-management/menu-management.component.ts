@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { IngredientService } from './../service/ingredient.service';
 import { MealService } from './../service/meal.service';
 import { MenuService } from './../service/menu.service';
@@ -21,12 +22,15 @@ categories = {
   9: 'boission',
 };
 images: any;
+menu: any;
 
 
   constructor(
     private menuService: MenuService,
     private mealService: MealService,
-    private ingredientService: IngredientService
+    private ingredientService: IngredientService,
+    private router:Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -51,5 +55,14 @@ async getMenuImage(menu: any) {
       menu.image64 = this.images.image64;
     }
   });
+}
+
+
+removeMenu(id:number){
+  this.menuService.deleteMenu(id).subscribe(res => {
+    this.menus = this.menus.filter((item: { id: number; }) => item.id !== id);
+    console.log('Menu deleted successfully!');
+
+})
 }
 }

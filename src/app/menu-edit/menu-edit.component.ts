@@ -93,8 +93,9 @@ export class MenuEditComponent implements OnInit {
     console.log("image_id", this.menu.imageId);
 
     let filePathAndName = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
-    this.tempImg = new Image(filePathAndName, this.menu.image64);
-    console.log('Img class', this.tempImg);
+    let temp = this.menu.image64;
+    this.tempImg = new Image(filePathAndName, temp);
+    console.log('Img menuclass', this.tempImg);
     this.menuService.updateImageMenu(this.menu.id, this.tempImg).subscribe((data) => {
       this.menu.image = data;
     });

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuService {
-  pokemon: Menu = new Menu();
+  menu: Menu = new Menu();
   menuUrlApi = 'http://localhost:8080/lunchtime/menu';
 
   constructor(private http: HttpClient) { }
@@ -43,7 +43,7 @@ export class MenuService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
-    return this.http.post<Menu>(this.menuUrlApi + "/add", menu, httpOptions);   //retourne un observable (requete asynchrone de type delete)
+    return this.http.put<Menu>(this.menuUrlApi + "/add", menu, httpOptions);   //retourne un observable (requete asynchrone de type delete)
   }
 
 
@@ -63,4 +63,11 @@ export class MenuService {
     return this.http.patch<Image>(this.menuUrlApi + '/updateimg/' + imageId, image, httpOptions);  //retourne un observable (requete asynchrone de type delete)
   }
 
+  deleteMenu(menuId:number){
+
+    const httpOptions ={headers: new HttpHeaders({'Content-Type':'application/json'})
+  }
+     return this.http.delete<Menu>(this.menuUrlApi + '/delete/' + menuId, httpOptions);
+
+}
 }
