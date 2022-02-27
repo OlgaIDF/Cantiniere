@@ -4,6 +4,8 @@ import { MenuManagementComponent } from './menu-management/menu-management.compo
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MealsManagementComponent } from './meals-management/meals-management.component';
+
 
 const routes: Routes = [
   {
@@ -21,6 +23,10 @@ const routes: Routes = [
   {
     path:'menu-management/add-menu',
     component: MenuAddComponent
+  },
+  {
+    path:'meal-management',
+    component: MealsManagementComponent
   },
 ];
 

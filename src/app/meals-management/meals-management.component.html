@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<main class="main">
+  <div class="container">
+
+    <h2 class="my-5">  Liste de repas</h2>
+    <table class="table table-bordered mt-5">
+      <thead class="table-success">
+        <tr >
+          <th>#ID</th>
+          <th>Label</th>
+          <th>Description</th>
+          <th>Categorie</th>
+          <th>Image</th>
+          <th>Status</th>
+          <th>Prix</th>
+          <th>Semaines</th>
+
+          <th>Ingredients</th>
+
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let meal of meals| paginate: {
+        id: 'first',
+        itemsPerPage: 5,
+        currentPage: p,
+        totalItems: totalLength
+            }">
+          <td >{{ meal.id }}</td>
+
+            <td>{{ meal.label }}</td>
+            <td >{{ meal.description }}</td>
+            <td>{{ meal.category }}</td>
+             <td><img [src]="meal.image64" alt="{{meal.label}}" class="img-fluid rounded mt-2" width="200"></td>
+          <td>{{ meal.status }}</td>
+          <td>{{ meal.priceDF }}</td>
+          <td>{{ meal.availableForWeeks }} </td>
+
+          <td >
+            <ul *ngFor="let ingredient of meal.ingredients"><li>{{ingredient.label}}</li></ul>
+            </td>
+
+
+
+          <td>
+
+            <button type="button" class="btn btn-secondary mt-5 me-2" >Modifier</button>
+            <button type="button" class="btn btn-success mt-5" >Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls  previousLabel="Précédente"
+    nextLabel="Suivante" (pageChange)="p = $event" class="text-center my-5 my-pagination" id="first"></pagination-controls>
+
+    <button type="button" class="btn btn-warning me-2 float-end">Ajouter</button>
+  </div>
+
+</main>
+<app-footer></app-footer>

@@ -1,3 +1,4 @@
+import { MealsManagementComponent } from './meals-management/meals-management.component';
 import { MenuService } from './service/menu.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +29,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MenuManagementComponent,
     MenuEditComponent,
     MenuAddComponent,
+    MealsManagementComponent
   ],
   imports: [
     BrowserModule,

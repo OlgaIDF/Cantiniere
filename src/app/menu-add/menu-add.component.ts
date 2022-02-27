@@ -70,9 +70,13 @@ export class MenuAddComponent implements OnInit {
 
     console.log('this menus length', this.menus.length);
 
-    for (let i = 0; i < this.menu.meals.length; i++) {
-      this.menu.mealIds.push(this.meals[this.menu.meals[i].id - 1].id);//meals id bigger than index in the meals Array by 1
-    }
+    // for (let i = 0; i < this.menu.meals.length; i++) {
+    //   this.menu.mealIds.push(this.meals[this.menu.meals[i].id - 1].id);//meals id bigger than index in the meals Array by 1
+    // }
+    this.menu.meals.forEach(element => {
+      this.menu.mealIds.push(element.id);
+    });
+
     let filePathTemp = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
     console.log('filepathe temp', filePathTemp);
 

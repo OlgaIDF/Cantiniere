@@ -2,7 +2,7 @@ import { Ingredient } from './ingredient';
 
 
 export class Meal {
-    id: number;
+    id?: number;
     label: string;
     status: boolean;
     imageId: number;
@@ -12,7 +12,7 @@ export class Meal {
     ingredients?: Ingredient [];
 
     constructor(
-        id: number,
+       // id: number,
         label: string,
         status: boolean,
         imageId: number,
@@ -20,7 +20,7 @@ export class Meal {
         availableForWeeks:string,
         category: number
     ) {
-        this.id = id;
+      //  this.id = id;
         this.label = label;
         this.status = status;
         this.imageId = imageId;
