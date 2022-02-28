@@ -8,6 +8,7 @@
         <tr >
           <th>#ID</th>
           <th>Label</th>
+          <th>Description</th>
           <th>Image</th>
           <th>Status</th>
           <th>Prix</th>
@@ -26,8 +27,8 @@
         totalItems: totalLength
             }">
           <td >{{ menu.id }}</td>
-
             <td>{{ menu.label }}</td>
+             <td >{{ menu.description }}</td>
              <td><img [src]="menu.image64" alt="{{menu.label}}" class="img-fluid rounded mt-2" width="200"></td>
           <td>{{ menu.status }}</td>
           <td>{{ menu.priceDF }}</td>

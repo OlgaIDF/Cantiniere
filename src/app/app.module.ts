@@ -17,6 +17,7 @@ import { MenuAddComponent } from './menu-add/menu-add.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MenuManagementComponent,
     MenuEditComponent,
     MenuAddComponent,
-    MealsManagementComponent
+    MealsManagementComponent,
+    MealEditComponent
   ],
   imports: [
     BrowserModule,

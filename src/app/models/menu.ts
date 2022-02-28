@@ -4,6 +4,7 @@ import { Image } from './../models/image';
 export class Menu {
   id?: number;
   label: string;
+  description:string;
   status: boolean;
   priceDF: number;
   availableForWeeks: string;
@@ -17,6 +18,7 @@ export class Menu {
   constructor(
     //id: number,
     label: string = '',
+    description: string = '',
     status: boolean = false,
     //  imageId: number = 0,
     image64: string = '',
@@ -29,6 +31,8 @@ export class Menu {
     //this.id = id,
     (this.label = label),
       (this.status = status),
+     (this.description= description),
+
      // (this.imageId = imageId),
       (this.image64 = image64),
       (this.priceDF = priceDF),

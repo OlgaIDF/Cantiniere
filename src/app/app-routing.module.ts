@@ -1,3 +1,4 @@
+import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenuAddComponent } from './menu-add/menu-add.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuManagementComponent } from './menu-management/menu-management.component';
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path:'menu-management/edit-menu/:id',
     component: MenuEditComponent
+  },
+  {
+    path:'meal-management/edit-meal/:id',
+    component: MealEditComponent
   },
   {
     path:'menu-management/add-menu',

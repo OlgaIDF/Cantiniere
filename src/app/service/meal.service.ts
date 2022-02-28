@@ -15,8 +15,10 @@ export class MealService {
     return this.http.get<Meal[]>(this.mealUrlApi+'/findall');
   }
 
-  getMealById(mealId:number): Observable<Meal[]> {
-    return this.http.get<any>(this.mealUrlApi+"/find/mealId");
+  getMealById  (id: number) {
+
+    const url = `${this.mealUrlApi}/find/${id}`;
+    return this.http.get<Meal>(url);
   }
 
   getAllMealForToday() : Observable<Meal[]> {
@@ -30,7 +32,7 @@ export class MealService {
   }
 
   findImgMeal(mealId: number) { {
-    return this.http.get<any>(this.mealUrlApi+"/findimg/"+mealId); 
+    return this.http.get<any>(this.mealUrlApi+"/findimg/"+mealId);
  }
 }
 

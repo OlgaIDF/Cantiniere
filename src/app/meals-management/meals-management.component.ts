@@ -13,14 +13,7 @@ export class MealsManagementComponent implements OnInit {
 meals:any;
 p: number = 1;
 totalLength:any;
-categories = {
-  1: 'plats du monde',
-  2: 'entrée',
-  3: 'plats',
-  5: 'dessert',
-  7: 'soupes',
-  9: 'boission',
-};
+
 images: any;
   constructor(
     private menuService: MenuService,
