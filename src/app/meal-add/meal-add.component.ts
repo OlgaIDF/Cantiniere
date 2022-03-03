@@ -1,26 +1,27 @@
+import { IngredientService } from './../service/ingredient.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Ingredient } from './../models/ingredient';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Image } from './../models/image';
 import { MealService } from './../service/meal.service';
-import { IngredientService } from './../service/ingredient.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Meal } from './../models/meal';
 
 @Component({
-  selector: 'app-meal-edit',
-  templateUrl: './meal-edit.component.html',
-  styleUrls: ['./meal-edit.component.css']
+  selector: 'app-meal-add',
+  templateUrl: './meal-add.component.html',
+  styleUrls: ['./meal-add.component.css']
 })
-export class MealEditComponent implements OnInit {
-  @Input() meal: any;
+export class MealAddComponent implements OnInit {
+
+  @Input() meal: Meal = new Meal()
   meals: any;
   images: any;
   ingredients: any = [];
   tempImg: any;
   img64: Image | undefined;
   week: number | undefined;
-  category: string | undefined;
+  category: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettingsWeek: IDropdownSettings = {};
   dropdownSettingsCategory: IDropdownSettings = {};
@@ -40,9 +41,10 @@ export class MealEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ingredientService: IngredientService,
+private ingredientService: IngredientService,
     private mealService: MealService
   ) { }
+
 
   ngOnInit(): void {
     this.dropdownSettings = {
@@ -66,56 +68,53 @@ export class MealEditComponent implements OnInit {
       selectAllText: 'Sélectionner tout',
       unSelectAllText: 'Désélectionner tout ',
     };
-    this.getMeal();
-  }//ngOnInit()
-
-  async getMeal() {
-    let id = this.route.snapshot.params['id'];
-    this.meal = this.mealService.getMealById(id).subscribe((data) => {
-      this.meal = data;
-      console.log('Meal: ', this.meal);
-
-      this.mealService.findImgMeal(id).subscribe((element) => {
-        this.images = element;
-        if (this.meal.imageId == this.images.id) {
-          this.meal.image64 = this.images.image64;
-        }
-      });
-
-      //IngredientsAll
+     //IngredientsAll
       this.ingredientService.getIngredients().subscribe((data) => {
         this.ingredients = data;
         console.log('Ingredients: ', this.ingredients);
       });
-      this.categorySelected = this.categories.filter(res => res.id == this.meal.category);
-      console.log('Category', this.categorySelected)
+   //MealsAll
+    this.mealService.getMeals().subscribe((data) => {
+      this.meals = data;
+      console.log('Meals: ', this.meals);
     });
-  }//getMeal()
 
 
-  onSubmit(editMeal: NgForm) {
-    console.log('this.meal.ingredients.length', this.meal.ingredients.length);
-    for (let i = 0; i < this.meal.ingredients.length; i++) {
-      this.temp_ingredients.push(this.meal.ingredients[i].id);//meals id bigger than index in the meals Array by 1
-    }
 
-    this.meal.ingredientsId = this.temp_ingredients;
+  }//ngOnInit()
 
-    this.mealService.updateMeal(this.meal.id, this.meal).subscribe((data) => {
+  onSubmit(addMeal: NgForm) {
+
+    this.meal.ingredients.forEach(element => {
+      this.meal.ingredientsId.push(element.id);
+    });
+
+this.meal.category = this.categorySelected[0].id;
+   console.log('this.meal.category', this.meal.category)
+
+
+    let filePathTemp = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
+    console.log('filepathe temp', filePathTemp);
+
+    this.img64 = new Image(filePathTemp, this.meal.image64);
+    this.meal.image = this.img64;
+    this.meal.filePath = filePathTemp;
+
+    this.meal.image64 = this.img64.image64;
+    this.meal.imageId = this.meals.length;
+
+    let tempCategory;
+    this.mealService.addMeal(this.meal).subscribe(data => {
       this.meal = data;
     });
-    console.log("image_id", this.meal.imageId);
 
-    let filePathAndName = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
-    let temp = this.meal.image64;
-    this.tempImg = new Image(filePathAndName, this.meal.image64);
-    console.log('Img mealclass', this.tempImg);
-    this.mealService.updateImageMeal(this.meal.id, this.tempImg).subscribe((data) => {
-      this.meal.image = data;
-    });
     console.log('onSubmit this.meal', this.meal);
 
     this.router.navigateByUrl('meal-management');
-  }//onSubmit()
-}
+    alert('Felicitation vous venez d\'ajouter '+ this.meal.label + ' à vos plats')
 
+  }//onSubmit()
+
+
+
+}

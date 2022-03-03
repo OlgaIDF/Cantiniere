@@ -33,7 +33,7 @@
                   [settings]="dropdownSettingsCategory"
                   [data]="categories "
                   [placeholder]="'Sélectionnez le categorie'"
-                  [(ngModel)]="meal.category"
+                  [(ngModel)]="categorySelected"
                   name="categories"
                 ></ng-multiselect-dropdown>
               </div>
@@ -45,6 +45,17 @@
                   type="text"
                   [(ngModel)]="meal.status"
                   name="status"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!--	 meal description -->
+              <div>
+                <label>Description</label>
+                <input
+                  type="text"
+                  [(ngModel)]="meal.description"
+                  name="description"
                   class="form-control"
                   required
                 />

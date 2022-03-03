@@ -1,49 +1,48 @@
 <section class="py-5">
-  <h1 class="text-center">Edition de {{ menu.label }}</h1>
+  <h1 class="text-center">Ajouter un nouveau ingredient </h1>
   <div class="container card px-4 px-lg-5 my-5">
     <div class="row">
       <div class="col-md-10">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="mt-5">
+        <form (ngSubmit)="onSubmit(addIngredient)" #addIngredient="ngForm" class="mt-5">
           <div class="row">
             <div class="col-md-6">
               <img
-                [src]="menu.image64"
-                alt="{{ menu.label }}"
+                [src]="ingredient.image64"
+                alt="{{ ingredient.label }}"
                 class="img-fluid rounded mt-2"
                 width="300"
               />
             </div>
             <div class="col-md-6">
-
-               <!-- Menu label -->
-               <div class="form-group">
+              <!-- ingredient label -->
+              <div class="form-group">
                 <label>Libellé</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.label"
+                  [(ngModel)]="ingredient.label"
                   name="label"
                   class="form-control"
                   required
                 />
               </div>
-               <!-- Menu description -->
+               <!-- ingredient description-->
                <div class="form-group">
-                <label>Description</label>
+                <label for="description">Déscription</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.description"
+                  [(ngModel)]="ingredient.description"
                   name="description"
                   class="form-control"
                   required
                 />
               </div>
-              <!-- Menu status -->
+              <!-- ingredient status -->
 
               <div class="form-group">
                 <label for="status">Statut</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.status"
+                  [(ngModel)]="ingredient.status"
                   name="status"
                   class="form-control"
                   required
@@ -54,45 +53,13 @@
                 <label>Image</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.image64"
+                  [(ngModel)]="ingredient.image64"
                   name="image"
                   class="form-control"
                   required
                 />
               </div>
-              <!-- Menu price -->
-              <div>
-                <label>Price</label>
-                <input
-                  type="text"
-                  [(ngModel)]="menu.priceDF"
-                  name="priceDF"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <!-- Menu price -->
-              <div>
-                <label>Meals</label>
 
-                <ng-multiselect-dropdown
-                  [settings]="dropdownSettings"
-                  [data]="meals"
-                  [placeholder]="'Sélectionnez les plats'"
-                  [(ngModel)]="menu.meals"
-                  name="meals"
-                ></ng-multiselect-dropdown>
-              </div>
-              <!-- Menu semaine -->
-
-                <label>Disponibilité par semaine</label>
-                <ng-multiselect-dropdown
-                [settings]="dropdownSettingsWeek"
-                [data]="availableForWeeks"
-                [placeholder]="'Sélectionnez les semaines'"
-                [(ngModel)]=" menu.availableForWeeks"
-                name="availableForWeeks"
-              ></ng-multiselect-dropdown>
 
               <!--  Submit button -->
               <div class="divider"></div>
@@ -100,7 +67,7 @@
                 <button
                   type="submit"
                   class="btn btn-warning float-end my-5"
-                  [disabled]="!f.form.valid"
+                  [disabled]="!addIngredient.form.valid"
                 >
                   Valider
                 </button>
@@ -112,3 +79,4 @@
     </div>
   </div>
 </section>
+

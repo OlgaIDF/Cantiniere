@@ -82,6 +82,7 @@ export class MenuEditComponent implements OnInit {
   }//getMenu()
 
   onSubmit(f: NgForm) {
+    console.log("meals Length ", this.menu.meals.length);
     for (let i = 0; i < this.menu.meals.length; i++) {
       this.temp_meals.push(this.meals[this.menu.meals[i].id - 1].id);//meals id bigger than index in the meals Array by 1
     }
@@ -95,7 +96,7 @@ export class MenuEditComponent implements OnInit {
     let filePathAndName = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
     let temp = this.menu.image64;
     this.tempImg = new Image(filePathAndName, temp);
-    console.log('Img menuclass', this.tempImg);
+    console.log('Img mealclass', this.tempImg);
     this.menuService.updateImageMenu(this.menu.id, this.tempImg).subscribe((data) => {
       this.menu.image = data;
     });

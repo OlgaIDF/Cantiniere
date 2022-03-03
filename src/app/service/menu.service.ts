@@ -55,19 +55,20 @@ export class MenuService {
     return this.http.patch<Menu>(this.menuUrlApi + '/update/' + menuId, menu, httpOptions);  //retourne un observable (requete asynchrone de type delete)
   }
 
-  updateImageMenu(imageId: number, image: Image): Observable<Image> {
+  updateImageMenu(menuId: number, image: Image): Observable<Image> {
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }) //indique le type de données envoyées
     }
-    return this.http.patch<Image>(this.menuUrlApi + '/updateimg/' + imageId, image, httpOptions);  //retourne un observable (requete asynchrone de type delete)
+    return this.http.patch<Image>(this.menuUrlApi + '/updateimg/' + menuId, image, httpOptions);  //retourne un observable (requete asynchrone de type delete)
   }
 
-  deleteMenu(menuId:number){
+  deleteMenu(menuId: number) {
 
-    const httpOptions ={headers: new HttpHeaders({'Content-Type':'application/json'})
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.delete<Menu>(this.menuUrlApi + '/delete/' + menuId, httpOptions);
+
   }
-     return this.http.delete<Menu>(this.menuUrlApi + '/delete/' + menuId, httpOptions);
-
-}
 }

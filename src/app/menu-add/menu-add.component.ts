@@ -58,7 +58,7 @@ export class MenuAddComponent implements OnInit {
     });
     this.menuService.getMenus().subscribe(data => {
       this.menus = data;
-      console.log('Meals: ', this.menus);
+      console.log('Menus: ', this.menus);
     })
 
 

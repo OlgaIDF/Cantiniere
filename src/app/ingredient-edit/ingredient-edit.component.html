@@ -1,0 +1,81 @@
+<section class="py-5">
+  <h1 class="text-center">Edition d'ingredient : {{ ingredient.label }}</h1>
+  <div class="container card px-4 px-lg-5 my-5">
+    <div class="row">
+      <div class="col-md-10">
+        <form (ngSubmit)="onSubmit(ingredientEdit)" #ingredientEdit="ngForm" class="mt-5">
+          <div class="row">
+            <div class="col-md-6">
+              <img
+                [src]="ingredient.image64"
+                alt="{{ ingredient.label }}"
+                class="img-fluid rounded mt-2"
+                width="300"
+              />
+            </div>
+            <div class="col-md-6">
+              <!-- ingredient label -->
+              <div class="form-group">
+                <label>Libellé</label>
+                <input
+                  type="text"
+                  [(ngModel)]="ingredient.label"
+                  name="label"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <!-- ingredient status -->
+
+              <div class="form-group">
+                <label for="status">Statut</label>
+                <input
+                  type="text"
+                  [(ngModel)]="ingredient.status"
+                  name="status"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!--	 ingredient description -->
+              <div>
+                <label>Description</label>
+                <input
+                  type="text"
+                  [(ngModel)]="ingredient.description"
+                  name="description"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!--	 ingredient image -->
+              <div>
+                <label>Image</label>
+                <input
+                  type="text"
+                  [(ngModel)]="ingredient.image64"
+                  name="image"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <!--  Submit button -->
+              <div class="divider"></div>
+              <div class="section center">
+                <button
+                  type="submit"
+                  class="btn btn-warning float-end my-5"
+                  [disabled]="!ingredientEdit.form.valid"
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

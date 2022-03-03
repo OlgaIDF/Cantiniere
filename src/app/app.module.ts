@@ -18,6 +18,10 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MealAddComponent } from './meal-add/meal-add.component';
+import { IngredientsManagementComponent } from './ingredients-management/ingredients-management.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { IngredientAddComponent } from './ingredient-add/ingredient-add.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { MealEditComponent } from './meal-edit/meal-edit.component';
     MenuEditComponent,
     MenuAddComponent,
     MealsManagementComponent,
-    MealEditComponent
+    MealEditComponent,
+    MealAddComponent,
+    IngredientsManagementComponent,
+    IngredientEditComponent,
+    IngredientAddComponent
   ],
   imports: [
     BrowserModule,

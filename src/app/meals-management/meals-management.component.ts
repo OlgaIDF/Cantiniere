@@ -47,11 +47,11 @@ images: any;
       });
     }
 
-    // removeMenu(id:number){
-    //   this.menuService.deleteMenu(id).subscribe(res => {
-    //     this.menus = this.menus.filter((item: { id: number; }) => item.id !== id);
-    //     console.log('Menu deleted successfully!');
+    removeMeal(id:number){
+      this.mealService.deleteMeal(id).subscribe(res => {
+        this.meals = this.meals.filter((item: { id: number; }) => item.id !== id);
+        console.log('Meal deleted successfully!');
 
-    // })
-    // }
+    })
+    }
     }

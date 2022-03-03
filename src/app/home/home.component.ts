@@ -162,8 +162,5 @@ export class HomeComponent implements OnInit {
     return this.weekNumber;
   }
 
-  getMealCategory(category_id: number) {
-    if (category_id == 2) {
-    }
-  }
+ 
 }

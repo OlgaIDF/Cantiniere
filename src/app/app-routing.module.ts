@@ -1,3 +1,7 @@
+import { IngredientAddComponent } from './ingredient-add/ingredient-add.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { IngredientsManagementComponent } from './ingredients-management/ingredients-management.component';
+import { MealAddComponent } from './meal-add/meal-add.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenuAddComponent } from './menu-add/menu-add.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
@@ -21,17 +25,34 @@ const routes: Routes = [
     path:'menu-management/edit-menu/:id',
     component: MenuEditComponent
   },
-  {
-    path:'meal-management/edit-meal/:id',
-    component: MealEditComponent
-  },
-  {
+{
     path:'menu-management/add-menu',
     component: MenuAddComponent
   },
   {
     path:'meal-management',
     component: MealsManagementComponent
+  },
+  {
+    path:'meal-management/edit-meal/:id',
+    component: MealEditComponent
+  },
+
+  {
+    path:'meal-management/add-meal',
+    component: MealAddComponent
+  },
+  {
+    path:'ingredients-management',
+    component: IngredientsManagementComponent
+  },
+  {
+    path:'ingredients-management/edit-ingredient/:id',
+    component: IngredientEditComponent
+  },
+  {
+    path:'ingredients-management/add-ingredient',
+    component: IngredientAddComponent
   },
 ];
 
