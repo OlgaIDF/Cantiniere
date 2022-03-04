@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div class="col-md-4 mx-auto bg-transparent">
+  <div class="card card-container bg-transparent">
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" minlength="3" maxlength="256" #name="ngModel">
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors['minlength']">Votre nom doit comporter au moins 3 caractères</div>
+          <div *ngIf="name.errors['maxlength']">Votre nom doit comporter 256 caractères maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input type="text" class="form-control" name="firstname" [(ngModel)]="form.firstname" minlength="3" maxlength="256" #firstname="ngModel">
+        <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+          <div *ngIf="firstname.errors['minlength']">Votre prénom doit comporter au moins 3 caractères</div>
+          <div *ngIf="firstname.errors['maxlength']">Votre prénom doit comporter 256 caractères maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Adresse</label>
+        <input type="text" class="form-control" name="address" [(ngModel)]="form.address" maxlength="500" #address="ngModel">
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="address.errors['maxlength']">Votre adresse doit comporter 500 caractères maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="town">Ville</label>
+        <input type="text" class="form-control" name="town" [(ngModel)]="form.town" maxlength="150" #town="ngModel">
+        <div class="alert-danger" *ngIf="town.errors && f.submitted">
+          <div *ngIf="town.errors['maxlength']">Votre ville doit comporter 150 caractères maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="postalCode">Code postal</label>
+        <input type="text" class="form-control" name="postalCode" [(ngModel)]="form.postalCode" minlength="5" maxlength="10" #postalCode="ngModel">
+        <div class="alert-danger" *ngIf="postalCode.errors && f.submitted">
+          <div *ngIf="postalCode.errors['minlength']">Votre code postal doit contenir au moins 5 chiffres</div>
+          <div *ngIf="postalCode.errors['maxlength']">Votre code postal doit contenir 10 chiffres maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Télephone</label>
+        <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" minlength="10" maxlength="15" #phone="ngModel">
+        <div class="alert-danger" *ngIf="phone.errors && f.submitted">
+          <div *ngIf="phone.errors['minlength']">Votre numéro de télephone doit contenir au moins 10 chiffres</div>
+          <div *ngIf="phone.errors['maxlength']">Votre numéro de télephone ne doit pas dépasser 15 caractères</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Genre</label>
+        <select class="form-control" name="sex" [(ngModel)]="form.sex" #sex="ngModel">
+          <option value="0" selected>Homme</option>
+          <option value="1">Femme</option>
+          <option value="2">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="wallet">Crédit à la création</label>
+        <input type="text" class="form-control" name="wallet" [(ngModel)]="form.wallet" maxlength="3" #wallet="ngModel">
+        <div class="alert-danger" *ngIf="wallet.errors && f.submitted">
+          <div *ngIf="wallet.errors['maxlength']">Le montant maximum de votre crédit ne doit pas dépasser 999 euros</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel">
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Votre email est requis</div>
+          <div *ngIf="email.errors['email']">Donner un email valide</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" maxlength="256" #password="ngModel">
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors['required']">Mot de passe requis</div>
+          <div *ngIf="password.errors['minlength']">Le mot de passe doit avoir 6 caractères minimum</div>
+          <div *ngIf="password.errors['maxlength']">Le mot de passe doit avoir 256 caractères maximum</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Valider</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Votre inscription n'a pas pu être validé<br>{{ errorMessage }}
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Inscription réussi
+    </div>
+  </div>
+</div>

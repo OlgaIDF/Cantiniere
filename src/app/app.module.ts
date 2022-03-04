@@ -14,8 +14,11 @@ import { MenuManagementComponent } from './menu-management/menu-management.compo
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuAddComponent } from './menu-add/menu-add.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardUserComponent } from './board-user/board-user.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MenuManagementComponent,
     MenuEditComponent,
     MenuAddComponent,
+    LoginComponent,
+    RegisterComponent,
+    BoardAdminComponent,
+    BoardUserComponent,
 
   ],
   imports: [

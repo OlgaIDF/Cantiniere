@@ -3,11 +3,31 @@ import { MenuManagementComponent } from './menu-management/menu-management.compo
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 const routes: Routes = [
   {
     path:'',
     component: HomeComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
+  },
+  {
+    path:'register',
+    component: RegisterComponent
+  },
+  {
+    path:'admin',
+    component: BoardAdminComponent
+  },
+  {
+    path:'user',
+    component: BoardUserComponent
   },
   {
     path:'menu-management',
