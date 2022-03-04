@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenService.getUser();
+    this.isLoggedIn = !this.tokenService.getUser();
     if(this.isLoggedIn){
       const user = this.tokenService.getUser();
       this.roles = user.roles;
