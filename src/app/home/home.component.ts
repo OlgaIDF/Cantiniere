@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
         }
       });
 
-    console.log(ingredient.image64);
+    //console.log(ingredient.image64);
   }
   // Méthode pour récupérer le numéro de la semaine actuelle
   getWeekNumber(dateWeek: any) {
@@ -162,5 +162,5 @@ export class HomeComponent implements OnInit {
     return this.weekNumber;
   }
 
- 
+
 }
