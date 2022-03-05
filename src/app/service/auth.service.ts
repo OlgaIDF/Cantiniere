@@ -9,12 +9,9 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   constructor(private http: HttpClient) { }
-
-  //login(email: string, password: string): Observable<any> {
-  //  return this.http.post(url + 'login', {email, password }, httpOptions);
-  //}
 
   login(email: string, password: string): Observable<any> {
     return  this.http.post(url+"login", {email, password }, { observe: 'response' });
@@ -35,5 +32,9 @@ export class AuthService {
       email,
       password
     }, httpOptions);
+  }
+
+  resendPassword(email: string){
+    return this.http.post(url + 'forgotpassword?email=' + email, {});
   }
 }

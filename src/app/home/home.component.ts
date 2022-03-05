@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
 
     //this.getAllMenuForWeek();
 
+    /* tout les utilisateurs(test: peut etre à supprimer)
     this.userService.getPublicContent().subscribe({
       next: data => {
         this.content = data;
@@ -59,6 +60,7 @@ export class HomeComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     })
+    */
 
   }
   async getAllMenuForToday() {

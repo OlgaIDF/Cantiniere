@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/lunchtime/';
+const url = 'http://localhost:8080/lunchtime/';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,17 @@ const API_URL = 'http://localhost:8080/lunchtime/';
 export class UserService {
   constructor(private http: HttpClient) { }
 
+  /* tout les utilisateurs , peut etre a supprimer
   getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
+    return this.http.get(url + 'all', { responseType: 'text' });
+  }*/
 
   getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+    return this.http.get(url + 'user', { responseType: 'text' });
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+    return this.http.get(url + 'admin', { responseType: 'text' });
   }
 }
 

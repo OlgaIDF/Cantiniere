@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -39,7 +40,6 @@ export class RegisterComponent implements OnInit {
       },
       error: err => {
         this.errorMessage = err.error.message;
-        console.log(err.error.message);
         this.isSignUpFailed = true;
       }
     });

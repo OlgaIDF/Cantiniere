@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
     RegisterComponent,
     BoardAdminComponent,
     BoardUserComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [
@@ -44,7 +47,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
     HttpClientModule,
     NgxPaginationModule
   ],
-  providers: [MenuService],
+  providers: [MenuService, authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

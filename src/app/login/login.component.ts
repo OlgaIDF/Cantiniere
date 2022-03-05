@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { TokenService } from '../service/token.service';
 import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -15,9 +14,9 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  roles: Array<any> = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenService) {}
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
