@@ -20,6 +20,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MealAddComponent } from './meal-add/meal-add.component';
 import { IngredientsManagementComponent } from './ingredients-management/ingredients-management.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardUserComponent } from './board-user/board-user.component';
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 import { IngredientAddComponent } from './ingredient-add/ingredient-add.component';
 
@@ -38,6 +42,10 @@ import { IngredientAddComponent } from './ingredient-add/ingredient-add.componen
     MealEditComponent,
     MealAddComponent,
     IngredientsManagementComponent,
+    LoginComponent,
+    RegisterComponent,
+    BoardAdminComponent,
+    BoardUserComponent,
     IngredientEditComponent,
     IngredientAddComponent
   ],

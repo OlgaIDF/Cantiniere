@@ -4,6 +4,7 @@ import { MealService } from './../service/meal.service';
 import { Menu } from './../models/menu';
 import { MenuService } from './../service/menu.service';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+
+  content?: string;
+
   menus: any;
 
   // Pour initialiser le numéro de la semaine
@@ -29,7 +33,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private menuService: MenuService,
     private mealService: MealService,
-    private ingredientService: IngredientService
+    private ingredientService: IngredientService,
+    private userService: UserService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -38,6 +43,16 @@ export class HomeComponent implements OnInit {
     this.getAllMealForToday();
 
     //this.getAllMenuForWeek();
+
+    this.userService.getPublicContent().subscribe({
+      next: data => {
+        this.content = data;
+      },
+      error: err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    })
+
   }
   async getAllMenuForToday() {
     this.menuService.getAllMenuForToday().subscribe((response) => {
