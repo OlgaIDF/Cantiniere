@@ -15,6 +15,12 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/menu-management">Gestion des menus</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/meal-management">Gestion des repas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ingredients-management">Gestion des ingrédients</a>
+          </li>
           <li class="nav-item"> <!-- if  *ngIf="showAdminBoard" a mettre si zone admin -->
             <a *ngIf="" class="nav-link" href="#">Zone admin</a>
           </li>
@@ -24,7 +30,7 @@
           <li class="nav-item">
 
             <a *ngIf="!isLoggedIn" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Connexion
+              Connexion </a>
 
             <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ email }}
@@ -33,13 +39,12 @@
             <ul *ngIf="!isLoggedIn" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="/login" routerLink="login">Se connecter</a></li>
               <li><a class="dropdown-item" href="/register" routerLink="register">S'enregistrer</a></li>
-
+            </ul>
             <ul *ngIf="isLoggedIn" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" routerLink="#">Profil</a></li>
               <li><a class="dropdown-item" >Se déconnecter</a></li>
             </ul>
-
-          </li>
+        </li>
 
         </ul>
       </div>
