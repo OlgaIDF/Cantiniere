@@ -64,6 +64,6 @@ export class IngredientEditComponent implements OnInit {
 
     console.log('onSubmit this.ingredient', this.ingredient);
 
-    //this.router.navigateByUrl('ingredients-management');
+   this.router.navigateByUrl('ingredients-management');
   }
 }//onSubmit()
