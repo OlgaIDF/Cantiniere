@@ -1,3 +1,4 @@
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { MealsManagementComponent } from './meals-management/meals-management.component';
 import { MenuService } from './service/menu.service';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 import { IngredientAddComponent } from './ingredient-add/ingredient-add.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { IngredientAddComponent } from './ingredient-add/ingredient-add.componen
     BoardAdminComponent,
     BoardUserComponent,
     IngredientEditComponent,
-    IngredientAddComponent
+    IngredientAddComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { IngredientAddComponent } from './ingredient-add/ingredient-add.componen
     NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],
-  providers: [MenuService],
+  providers: [MenuService, authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
