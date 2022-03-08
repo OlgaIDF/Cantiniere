@@ -25,10 +25,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
+
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 import { IngredientAddComponent } from './ingredient-add/ingredient-add.component';
 import { CartComponent } from './cart/cart.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { CartComponent } from './cart/cart.component';
     RegisterComponent,
     BoardAdminComponent,
     BoardUserComponent,
+    ForgetPasswordComponent,
     IngredientEditComponent,
     IngredientAddComponent,
     CartComponent

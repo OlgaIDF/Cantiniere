@@ -73,6 +73,11 @@
       </div>
 
       <div class="form-group">
+        <label for="image_64">Image</label>
+        <input type="text" class="form-control" name="image_64" [(ngModel)]="form.image_64" #image_64="ngModel">
+      </div>
+
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel">
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
