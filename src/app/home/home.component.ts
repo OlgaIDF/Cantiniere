@@ -26,16 +26,9 @@ export class HomeComponent implements OnInit {
   images: any;
   mealList: any = [];
   ingredients: any = [];
-  mainMenu: any = [6];
+  mainMenu: any = [];
 
-  categories = {
-    1: 'plats du monde',
-    2: 'entrée',
-    3: 'plats',
-    5: 'dessert',
-    7: 'soupes',
-    9: 'boission',
-  };
+
 
   constructor(
     private menuService: MenuService,
@@ -164,7 +157,7 @@ export class HomeComponent implements OnInit {
         }
       });
 
-    console.log(ingredient.image64);
+    //console.log(ingredient.image64);
   }
   // Méthode pour récupérer le numéro de la semaine actuelle
   getWeekNumber(dateWeek: any) {
@@ -186,8 +179,5 @@ export class HomeComponent implements OnInit {
     return this.weekNumber;
   }
 
-  getMealCategory(category_id: number) {
-    if (category_id == 2) {
-    }
-  }
+
 }

@@ -1,96 +1,107 @@
 <section class="py-5">
-  <h1 class="text-center">Edition de {{ menu.label }}</h1>
+  <h1 class="text-center">Edition de plat : {{ meal.label }}</h1>
   <div class="container card px-4 px-lg-5 my-5">
     <div class="row">
       <div class="col-md-10">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="mt-5">
+        <form (ngSubmit)="onSubmit(editMeal)" #editMeal="ngForm" class="mt-5">
           <div class="row">
             <div class="col-md-6">
               <img
-                [src]="menu.image64"
-                alt="{{ menu.label }}"
+                [src]="meal.image64"
+                alt="{{ meal.label }}"
                 class="img-fluid rounded mt-2"
                 width="300"
               />
             </div>
             <div class="col-md-6">
-
-               <!-- Menu label -->
-               <div class="form-group">
+              <!-- meal label -->
+              <div class="form-group">
                 <label>Libellé</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.label"
+                  [(ngModel)]="meal.label"
                   name="label"
                   class="form-control"
                   required
                 />
               </div>
-               <!-- Menu description -->
-               <div class="form-group">
-                <label>Description</label>
-                <input
-                  type="text"
-                  [(ngModel)]="menu.description"
-                  name="description"
-                  class="form-control"
-                  required
-                />
+               <!-- meal category -->
+               <div>
+                <label>Categorie</label>
+
+                <ng-multiselect-dropdown
+                  [settings]="dropdownSettingsCategory"
+                  [data]="categories "
+                  [placeholder]="'Sélectionnez le categorie'"
+                  [(ngModel)]="categorySelected"
+                  name="categories"
+                ></ng-multiselect-dropdown>
               </div>
-              <!-- Menu status -->
+              <!-- meal status -->
 
               <div class="form-group">
                 <label for="status">Statut</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.status"
+                  [(ngModel)]="meal.status"
                   name="status"
                   class="form-control"
                   required
                 />
               </div>
-              <!--	 Menu image -->
+              <!--	 meal description -->
+              <div>
+                <label>Description</label>
+                <input
+                  type="text"
+                  [(ngModel)]="meal.description"
+                  name="description"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!--	 meal image -->
               <div>
                 <label>Image</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.image64"
+                  [(ngModel)]="meal.image64"
                   name="image"
                   class="form-control"
                   required
                 />
               </div>
-              <!-- Menu price -->
+              <!-- meal price -->
               <div>
                 <label>Price</label>
                 <input
                   type="text"
-                  [(ngModel)]="menu.priceDF"
+                  [(ngModel)]="meal.priceDF"
                   name="priceDF"
                   class="form-control"
                   required
                 />
               </div>
-              <!-- Menu price -->
+              <!-- meal ingredients -->
               <div>
-                <label>Meals</label>
+                <label>Ingredients</label>
 
                 <ng-multiselect-dropdown
                   [settings]="dropdownSettings"
-                  [data]="meals"
-                  [placeholder]="'Sélectionnez les plats'"
-                  [(ngModel)]="menu.meals"
+                  [data]="ingredients"
+                  [placeholder]="'Sélectionnez les ingredients'"
+                  [(ngModel)]="meal.ingredients"
                   name="meals"
                 ></ng-multiselect-dropdown>
               </div>
-              <!-- Menu semaine -->
+              <!-- meal semaine -->
 
                 <label>Disponibilité par semaine</label>
                 <ng-multiselect-dropdown
                 [settings]="dropdownSettingsWeek"
                 [data]="availableForWeeks"
                 [placeholder]="'Sélectionnez les semaines'"
-                [(ngModel)]=" menu.availableForWeeks"
+                [(ngModel)]=" meal.availableForWeeks"
                 name="availableForWeeks"
               ></ng-multiselect-dropdown>
 
@@ -100,7 +111,7 @@
                 <button
                   type="submit"
                   class="btn btn-warning float-end my-5"
-                  [disabled]="!f.form.valid"
+                  [disabled]="!editMeal.form.valid"
                 >
                   Valider
                 </button>
@@ -112,3 +123,4 @@
     </div>
   </div>
 </section>
+

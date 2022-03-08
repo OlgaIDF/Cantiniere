@@ -1,1 +1,115 @@
-<p>menu-add works!</p>
+<section class="py-5">
+  <h1 class="text-center">Ajouter un nouveau menu </h1>
+  <div class="container card px-4 px-lg-5 my-5">
+    <div class="row">
+      <div class="col-md-10">
+        <form (ngSubmit)="onSubmit(addform)" #addform="ngForm" class="mt-5">
+          <div class="row">
+            <div class="col-md-6">
+              <img
+                [src]="menu.image64"
+                alt="{{ menu.label }}"
+                class="img-fluid rounded mt-2"
+                width="300"
+              />
+            </div>
+            <div class="col-md-6">
+              <!-- Menu label -->
+              <div class="form-group">
+                <label>Libellé</label>
+                <input
+                  type="text"
+                  [(ngModel)]="menu.label"
+                  name="label"
+                  class="form-control"
+                  required
+                />
+              </div>
+               <!-- Menu description-->
+               <div class="form-group">
+                <label for="description">Déscription</label>
+                <input
+                  type="text"
+                  [(ngModel)]="menu.description"
+                  name="description"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Menu status -->
+
+              <div class="form-group">
+                <label for="status">Statut</label>
+                <input
+                  type="text"
+                  [(ngModel)]="menu.status"
+                  name="status"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!--	 Menu image -->
+              <div>
+                <label>Image</label>
+                <input
+                  type="text"
+                  [(ngModel)]="menu.image64"
+                  name="image"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Menu price -->
+              <div>
+                <label>Price</label>
+                <input
+                  type="text"
+                  [(ngModel)]="menu.priceDF"
+                  name="priceDF"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Menu price -->
+              <div>
+                <label>Meals</label>
+
+                <ng-multiselect-dropdown
+                  [settings]="dropdownSettings"
+                  [data]="meals"
+                  [placeholder]="'Sélectionnez les plats'"
+                  [(ngModel)]="menu.meals"
+                  name="meals"
+                ></ng-multiselect-dropdown>
+              </div>
+              <!-- Menu semaine -->
+
+                <label>Disponibilité par semaine</label>
+                <ng-multiselect-dropdown
+                [settings]="dropdownSettingsWeek"
+                [data]="availableForWeeks"
+                [placeholder]="'Sélectionnez les semaines'"
+                [(ngModel)]=" menu.availableForWeeks"
+                name="availableForWeeks"
+              ></ng-multiselect-dropdown>
+
+              <!--  Submit button -->
+              <div class="divider"></div>
+              <div class="section center">
+                <button
+                  type="submit"
+                  class="btn btn-warning float-end my-5"
+                  [disabled]="!addform.form.valid"
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+

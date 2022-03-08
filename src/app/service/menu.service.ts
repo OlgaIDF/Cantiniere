@@ -9,49 +9,66 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MenuService {
-
-menuUrlApi = 'http://localhost:8080/lunchtime/menu';
-
+  menu: Menu = new Menu();
+  menuUrlApi = 'http://localhost:8080/lunchtime/menu';
 
   constructor(private http: HttpClient) { }
 
   getMenus(): Observable<Menu[]> {
-    return this.http.get<Menu[]>(this.menuUrlApi+'/findall');
+    return this.http.get<Menu[]>(this.menuUrlApi + '/findall');
   }
 
-  getMenuById(id:number){
+  getMenuById(id: number) {
 
     const url = `${this.menuUrlApi}/find/${id}`;
-     return this.http.get<Menu>(url);
+    return this.http.get<Menu>(url);
   }
 
-  getAllMenuForToday() : Observable<Menu[]> {
+  getAllMenuForToday(): Observable<Menu[]> {
     console.log("getMenuToday : ")
-    return this.http.get<Menu[]>(this.menuUrlApi+'/findallavailablefortoday');
+    return this.http.get<Menu[]>(this.menuUrlApi + '/findallavailablefortoday');
 
   }
 
-  getAllMenuForWeek(weekNumber: number){
-    return this.http.get<Menu>(this.menuUrlApi+'/findallavailableforweek/' + weekNumber);
+  getAllMenuForWeek(weekNumber: number) {
+    return this.http.get<Menu>(this.menuUrlApi + '/findallavailableforweek/' + weekNumber);
   }
 
-  getMenuImage(menuId: number) { {
-    return this.http.get<any>(this.menuUrlApi+"/findimg/"+menuId);
-}
-// addMenu(menu:Menu){// prend en argument un objet pokemon
-
-//   const httpOptions ={
-//   headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
-//   }
-//    return this.http.post<Menu>(this.pokemonsUrlApi,menu,httpOptions);   //retourne un observable (requete asynchrone de type delete)
-// }
- }
- updateMenu(menuId: number, menu:Menu):Observable<Menu>{
-
-  const httpOptions ={
-  headers: new HttpHeaders({'Content-Type':'application/json'}) //indique le type de données envoyées
+  getMenuImage(menuId: number) {
+    {
+      return this.http.get<any>(this.menuUrlApi + "/findimg/" + menuId);
+    }
   }
-   return this.http.patch<Menu>(this.menuUrlApi+ 'menu/update/'+ menuId ,menu,httpOptions);  //retourne un observable (requete asynchrone de type delete)
-}
+  addMenu(menu: Menu) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.put<Menu>(this.menuUrlApi + "/add", menu, httpOptions);   //retourne un observable (requete asynchrone de type delete)
+  }
 
+
+  updateMenu(menuId: number, menu: Menu): Observable<Menu> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }) //indique le type de données envoyées
+    }
+    return this.http.patch<Menu>(this.menuUrlApi + '/update/' + menuId, menu, httpOptions);  //retourne un observable (requete asynchrone de type delete)
+  }
+
+  updateImageMenu(menuId: number, image: Image): Observable<Image> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }) //indique le type de données envoyées
+    }
+    return this.http.patch<Image>(this.menuUrlApi + '/updateimg/' + menuId, image, httpOptions);  //retourne un observable (requete asynchrone de type delete)
+  }
+
+  deleteMenu(menuId: number) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.delete<Menu>(this.menuUrlApi + '/delete/' + menuId, httpOptions);
+
+  }
 }

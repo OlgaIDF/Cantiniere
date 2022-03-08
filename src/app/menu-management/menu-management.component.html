@@ -4,16 +4,18 @@
   <div class="container">
     <h2 class="my-5">  Liste de menus</h2>
     <table class="table table-bordered mt-5">
-      <thead class="table-dark p-5">
+      <thead class="table-success">
         <tr >
           <th>#ID</th>
           <th>Label</th>
+          <th>Description</th>
+          <th>Image</th>
           <th>Status</th>
           <th>Prix</th>
           <th>Semaines</th>
 
           <th>Plats</th>
-          <th>ImageId</th>
+
           <th>Action</th>
         </tr>
       </thead>
@@ -25,7 +27,9 @@
         totalItems: totalLength
             }">
           <td >{{ menu.id }}</td>
-          <td>{{ menu.label }}</td>
+            <td>{{ menu.label }}</td>
+             <td >{{ menu.description }}</td>
+             <td><img [src]="menu.image64" alt="{{menu.label}}" class="img-fluid rounded mt-2" width="200"></td>
           <td>{{ menu.status }}</td>
           <td>{{ menu.priceDF }}</td>
           <td>{{ menu.availableForWeeks }} </td>
@@ -33,19 +37,19 @@
           <td >
             <ul *ngFor="let meal of menu.meals"><li>{{meal.label}}</li></ul>
             </td>
-          <td>{{ menu.imageId }}</td>
+
           <td>
-            <button type="button" class="btn btn-secondary me-2">Ajouter</button>
-            <button type="button" class="btn btn-primary me-2" [routerLink]="['edit-menu', menu.id]">Modifier</button>
-            <button type="button" class="btn btn-danger">Supprimer</button>
+
+            <button type="button" class="btn btn-secondary mt-5 me-2" [routerLink]="['edit-menu', menu.id]">Modifier</button>
+            <button type="button" class="btn btn-success mt-5" (click)="removeMenu(menu.id)">Supprimer</button>
           </td>
         </tr>
       </tbody>
     </table>
     <pagination-controls  previousLabel="Précédente"
-    nextLabel="Suivante" (pageChange)="p = $event" class="text-center my-5" id="first"></pagination-controls>
+    nextLabel="Suivante" (pageChange)="p = $event" class="text-center my-5 my-pagination" id="first"></pagination-controls>
 
-
+    <button type="button" class="btn btn-warning me-2 float-end" [routerLink]="['add-menu']">Ajouter</button>
 
   </div>
 </main>

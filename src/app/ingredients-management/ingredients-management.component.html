@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<main class="main">
+  <div class="container">
+    <h2 class="my-5">  Liste de ingredients</h2>
+    <table class="table table-bordered mt-5">
+      <thead class="table-success">
+        <tr >
+          <th>#ID</th>
+          <th>Label</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Status</th>
+
+
+
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let ingredient of ingredients | paginate: {
+        id: 'first',
+        itemsPerPage: 5,
+        currentPage: p,
+        totalItems: totalLength
+            }">
+          <td >{{ ingredient.id }}</td>
+            <td>{{ ingredient.label }}</td>
+             <td >{{ ingredient.description }}</td>
+             <td><img [src]="ingredient.image64" alt="{{ingredient.label}}" class="img-fluid rounded mt-2" width="200"></td>
+          <td>{{ ingredient.status }}</td>
+                   <td>
+
+            <button type="button" class="btn btn-secondary mt-5 me-2" [routerLink]="['edit-ingredient', ingredient.id]">Modifier</button>
+            <button type="button" class="btn btn-success mt-5" (click)="removeIngredient(ingredient.id)" >Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls  previousLabel="Précédente"
+    nextLabel="Suivante" (pageChange)="p = $event" class="text-center my-5 my-pagination" id="first"></pagination-controls>
+
+    <button type="button" class="btn btn-warning me-2 float-end" [routerLink]="['add-ingredient']" >Ajouter</button>
+
+  </div>
+</main>
+<app-footer></app-footer>
+

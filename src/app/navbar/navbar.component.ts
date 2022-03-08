@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { TokenService } from '../service/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   showUserBoard = false;
   email?: string;
 
-  constructor(public authService: AuthService, private tokenService: TokenService) { }
+  constructor(public authService: AuthService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !this.tokenService.getUser();
@@ -29,7 +30,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.tokenService.signOut();
-    window.location.reload();
+    this.router.navigateByUrl('');
   }
 
 }

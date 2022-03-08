@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { TokenService } from '../service/token.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -14,9 +15,10 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  isLunchLady = false;
   roles: Array<any> = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenService) {}
+  constructor(private authService: AuthService, private tokenStorage: TokenService, private router: Router) {}
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -31,10 +33,21 @@ export class LoginComponent implements OnInit {
       next: data => {
         let jwtToken = data.headers.get('Authorization');
         this.tokenStorage.saveToken(jwtToken);
-        this.tokenStorage.saveUser(jwtToken);
+        //this.tokenStorage.saveUser(jwtToken.user);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        const dataUser : any = jwt_decode(jwtToken);
+        const testUser = JSON.stringify(dataUser.user);
+        console.log(testUser);
+
+        //console.log(dataUser);
+        //let testUser = JSON.parse(dataUser.user);
+        //const resultUser = localStorage.setItem('user', jwt_decode(jwtToken.user));
+        //console.log(resultUser);
+
+        let testLady = JSON.stringify(dataUser.user.isLunchLady);
+        console.log('resultat test lady : '+testLady);
+
         this.reloadPage();
       },
       error: err => {
@@ -45,6 +58,6 @@ export class LoginComponent implements OnInit {
   }
 
   reloadPage(): void {
-    window.location.reload();
+    this.router.navigateByUrl('');
   }
 }
