@@ -53,7 +53,7 @@ const routes: Routes = [
     component: MealsManagementComponent
   },
   {
-    path:'repas/edit-meal/:id',
+    path:'meal-management/edit-meal/:id',
     component: MealEditComponent
   },
 
