@@ -15,14 +15,15 @@ export class TokenService {
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.removeItem(TOKEN_KEY); // vidage du cache
+    window.sessionStorage.setItem(TOKEN_KEY, token); // stockage du token dans le cache du navigateur
   }
 
   public getToken(): string | null {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
+  /*
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -35,5 +36,6 @@ export class TokenService {
     }
     return {};
   }
+  */
 
 }

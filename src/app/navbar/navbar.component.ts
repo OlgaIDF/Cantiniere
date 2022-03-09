@@ -18,13 +18,19 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !this.tokenService.getUser();
+    //this.isLoggedIn = !this.tokenService.getUser();
+    this.isLoggedIn = !this.tokenService.getToken();
     if(this.isLoggedIn){
+      /*
       const user = this.tokenService.getUser();
       this.roles = user.roles;
       this.showAdminBoard = this.roles.includes('ROLE_LUNCHLADY');
       this.showUserBoard = this.roles.includes('ROLE_USER');
       this.email = user.email;
+      */
+      const user = this.tokenService.getToken();
+      //this.showAdminBoard = this.roles.includes('ROLE_LUNCHLADY');
+      //this.showUserBoard = this.roles.includes('ROLE_USER');
     }
   }
 

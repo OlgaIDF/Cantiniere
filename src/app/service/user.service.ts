@@ -11,11 +11,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUserBoard(): Observable<any> {
-    return this.http.get(url + 'user', { responseType: 'text' });
+    //return this.http.get(url + 'user', { responseType: 'text' });
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(url + 'admin', { responseType: 'text' });
+    //return this.http.get(url + 'admin', { responseType: 'text' });
   }
 }
 

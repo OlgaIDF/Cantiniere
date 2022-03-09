@@ -13,10 +13,11 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> { // envoi des variables à l'api pour la connexion
     return  this.http.post(url+"login", {email, password }, { observe: 'response' });
   }
 
+  // envoie des variables d'incription à l'api
   register(name: string,firstname: string, address: string, postalCode: string, town: string, phone: string, sex: number, isLunchLady:number, wallet: number, image_64: string , image_path: string, email: string, password: string): Observable<any> {
     return this.http.put(url + 'user/register', {
       name,
@@ -35,6 +36,7 @@ export class AuthService {
     }, httpOptions);
   }
 
+  // envoie du mail à l'api pour récupération du mdp
   resendPassword(email: string){
     return this.http.post(url+'forgotpassword?email='+email, {});
   }

@@ -23,21 +23,21 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      //this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
   onSubmit(): void {
     const { email, password } = this.form;
-    this.authService.login(email, password).subscribe({
-      next: data => {
-        let jwtToken = data.headers.get('Authorization');
-        this.tokenStorage.saveToken(jwtToken);
+    this.authService.login(email, password).subscribe({// méthode subscribe qui permet de souscrire à un Observable et être notifié des nouvelles valeurs et des erreurs
+      next: data => { //callbacks de capture de la valeur en retour
+        let jwtToken = data.headers.get('Authorization'); // Stockage du token récupéré de l api dans une variable
+        this.tokenStorage.saveToken(jwtToken); // stockage du token dans le cache du navigateur
         //this.tokenStorage.saveUser(jwtToken.user);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        const dataUser : any = jwt_decode(jwtToken);
-        const testUser = JSON.stringify(dataUser.user);
+        this.isLoginFailed = false; // Variable login échoué sur false
+        this.isLoggedIn = true; // Variable login réussi sur true
+        const dataUser : any = jwt_decode(jwtToken); // Décrypte le token
+        const testUser = JSON.stringify(dataUser.user); // Récupère les données User dans le token décrypté
         console.log(testUser);
 
         //console.log(dataUser);
@@ -45,14 +45,15 @@ export class LoginComponent implements OnInit {
         //const resultUser = localStorage.setItem('user', jwt_decode(jwtToken.user));
         //console.log(resultUser);
 
-        let testLady = JSON.stringify(dataUser.user.isLunchLady);
+        let testLady = JSON.stringify(dataUser.user.isLunchLady); //récupèration du status admin/user de l'utilisateur connecté isLunchLady sur True/False
+
         console.log('resultat test lady : '+testLady);
 
         this.reloadPage();
       },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
+      error: err => { //callbacks de capture d'erreur
+        this.errorMessage = err.error.message; // Récupération du message d'erreur
+        this.isLoginFailed = true; // Variable login échoué sur true
       }
     });
   }

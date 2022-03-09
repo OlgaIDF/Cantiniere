@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
 
+    // formatage de l'image
     let filePathTemp = 'img' + '/pict_' + Math.floor(Math.random() * (800 + 1)) + '.png';
     console.log('filepathe temp', filePathTemp);
 
@@ -47,15 +48,16 @@ export class RegisterComponent implements OnInit {
     this.form.image_Id = this.form.length;
 
     const {name, firstname, address, postalCode, town, phone, sex, isLunchLady, image_64, image_path, wallet, email, password} = this.form;
-    this.authService.register(name, firstname, address, postalCode, town, phone, sex, isLunchLady,wallet,image_64,image_path, email, password).subscribe({
-      next: data => {
+    // envoi dans la function register des variables pour l'enregistrement d'un user
+    this.authService.register(name, firstname, address, postalCode, town, phone, sex, isLunchLady,wallet,image_64,image_path, email, password).subscribe({ // méthode subscribe qui permet de souscrire à un Observable et être notifié des nouvelles valeurs et des erreurs
+      next: data => {//callbacks de capture de la valeur en retour
         console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
+        this.isSuccessful = true;// Variable inscription réussi sur true
+        this.isSignUpFailed = false;// Variable inscription échoué sur false
       },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+      error: err => { //callbacks de capture d'erreur
+        this.errorMessage = err.error.message;// Récupération du message d'erreur
+        this.isSignUpFailed = true;// Variable inscription échoué sur true
       }
     });
   }
